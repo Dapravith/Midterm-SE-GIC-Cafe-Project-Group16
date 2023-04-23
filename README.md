@@ -2,13 +2,13 @@
 
 # Members
 
-Rotha Dapravith
+# Rotha Dapravith
 
-Sdeung Viraknon
+# Sdeung Viraknon
 
-Sun Vysing
+# Sun Vysing
 
-Tha Chansopharong
+# Tha Chansopharong
 
 # command line for Project setup 
 gradle build
