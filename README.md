@@ -1,6 +1,6 @@
 # SE_Team16
 
-Gic_Cafe
+# Gic_Cafe
 
 # Members
 
@@ -18,4 +18,6 @@ gradle build
 # Start run Project
 gradle bootRun
 
-# Start run on Spring-boot Dashboard in VsCode
+# start open local host
+
+localhost:8080
