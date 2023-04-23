@@ -16,6 +16,6 @@ gradle build
 # Start run Project
 gradle bootRun
 
-# start open local host
+# start open localhost
 
 localhost:8080
