@@ -16,6 +16,8 @@ gradle build
 # Start run Project
 gradle bootRun
 
+you can start run on Spring-boot Dashboard
+
 # start open localhost
 
 localhost:8080
