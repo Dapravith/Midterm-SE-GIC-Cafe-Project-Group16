@@ -1,6 +1,4 @@
-# SE_Team16
-
-# Gic_Cafe
+# SE_Team16_Gic_Cafe
 
 # Members
 
