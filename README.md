@@ -10,14 +10,21 @@ Sun Vysing
 
 Tha Chansopharong
 
-# Project setup 
+# command line for Project setup 
 gradle build
 
-# Start run Project
+# command line for Start run Project
 gradle bootRun
 
+# run via spring-boot Dashboard
 you can start run on Spring-boot Dashboard
 
 # start open localhost
 
 localhost:8080
+
+# Login
+localhost:8080/login
+
+# tableSelection
+localhost:8080/tableSelection
