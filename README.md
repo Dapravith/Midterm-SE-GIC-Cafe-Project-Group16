@@ -1,14 +1,11 @@
-# SE_Team16_Gic_Cafe
+# Midterm-SE-GIC_CAFE_TEAM16
 
 # Members
 
-# Rotha Dapravith
-
-# Sdeung Viraknon
-
-# Sun Vysing
-
-# Tha Chansopharong
+Rotha Dapravith
+Sdeung Viraknon
+Sun Vysing
+Tha Chansopharong
 
 # command line for Project setup 
 gradle build
@@ -20,11 +17,5 @@ gradle bootRun
 you can start run on Spring-boot Dashboard
 
 # start open localhost
-
 localhost:8080
 
-# Login
-localhost:8080/login
-
-# tableSelection
-localhost:8080/tableSelection
