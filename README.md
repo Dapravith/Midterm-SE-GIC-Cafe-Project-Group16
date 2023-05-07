@@ -10,6 +10,16 @@ Sun Vysing
 
 Tha Chansopharong
 
+# Task Modules Division
+
+Rotha Dapravith 1-3
+
+Tha Chansopharong 4-6
+
+Sdeung Viraknon 7-9
+
+Sun Vysing 10-13
+
 # command line for Project setup 
 gradle build
 
