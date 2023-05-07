@@ -4,10 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+
 @RestController
     public class gicCafeController {
         @GetMapping(path = "/login")
-        public ModelAndView task1(){
+        public ModelAndView login(){
             return new ModelAndView("login");
         }
     
@@ -15,5 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
         public ModelAndView tableSelection(){
             return new ModelAndView("tableSelection");
         }
-    }
 
+        @GetMapping(path = "/signup")
+        public ModelAndView signup(){
+            return new ModelAndView("signup");
+        }
+    }
