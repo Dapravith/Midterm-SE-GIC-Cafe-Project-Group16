@@ -1,234 +1,506 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>DrinkSelection</title>
-=======
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
->>>>>>> 0ff0f57036d7cc320915bd07460de4c1143a7792
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-		/* Style for the pop-up form */
-		.popup-form {
-			display: none; /* Hidden by default */
-			position: fixed; /* Stay in place */
-			z-index: 1; /* Sit on top */
-			left: 0;
-			top: 0;
-			width: 100%; /* Full width */
-			height: 100%; /* Full height */
-			overflow: auto; /* Enable scroll if needed */
-			background-color: rgba(0,0,0,0.4); /* Black with opacity */
-		}
-		
-		/* Style for the form content */
-		.popup-form-content {
-			background-color: #fefefe;
-			margin: 10% auto; /* 15% from the top and centered */
-			padding: 20px;
-			border: 1px solid #888;
-			width: 80%; /* Could be more or less, depending on screen size */
-		}
-		
-		/* Style for the close button */
-		.popup-form-close {
-			color: #aaa;
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
-		}
-		
-		.popup-form-close:hover,
-		.popup-form-close:focus {
-			color: black;
-			text-decoration: none;
-			cursor: pointer;
-		}
-	</style>
-</head>
-<body>
-    <div id="container" class="flex bg-[#f2f2f2] h-[100vh]">
-        <div id="d-selection" class="w-1/2 p-3">
-            <div id="category" class="flex bg-[#8eaadc] justify-center p-3">
-                <button th:each="category: ${categories}" th:text="${category.name}" th:id="${category.id}" class="category bg-[#343f50] mx-2 p-1 rounded-lg flex justify-center items-center text-white text-2xl active"></button>
-            </div>
-            <div class="border border-gray-400 my-2"></div>
-            <div th:each="category: ${categories}" th:id="${'dcontent' + category.id}" class="grid-cols-3 gap-2 hidden dcontent">
-                <div th:each="drink: ${drinks}" th:if="${drink.category_id == category.id}" th:id="${drink.id}" class="drink rounded-lg bg-white hover:bg-black duration-200 hover:text-white">
-                    <img th:src="*{'data:image/jpeg;base64,'+{drink.image}}" alt="americano" th:id="${drink.id}" class="rounded-lg h-44 w-full object-cover">
-                    <div th:text="${drink.name}" class="w-full flex justify-center text-lg" th:id="${drink.id}"></div>
-                </div>
-            </div>
-        </div>
-        <div id="d-information" class="w-1/2 bg-[#deebf7] p-3 flex flex-col justify-between">
-            <div>
-                <h1 class="text-3xl w-full flex justify-center p-3">Order information</h1>
-                <div class="border border-gray-400 my-2"></div>
-                <table class="w-full">
-                    <thead>
-                        <tr class="w-full grid grid-cols-6">
-                            <th class="flex justify-start" scope="row">ID</th>
-                            <th class="flex justify-start">Name</th>
-                            <th class="flex justify-start">Size</th>
-                            <th class="flex justify-start">Amount</th>
-                            <th class="flex justify-start">Price</th>
-                            <th class="flex justify-start">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <tr th:each="order: ${allOrders}" class="w-full grid grid-cols-6">
-                        <th th:text="${order.getDrink_order().getId}" class="flex justify-start" scope="row"></th>
-                        <td th:text="${order.getDrink().getName()}" class="flex justify-start"></td>
-                        <td th:text="${order.getSize().getName()}" class="flex justify-start"></td>
-                        <td th:text="${order.getDrink_order().getAmount()}" class="flex justify-start"></td>
-                        <td th:text="${order.getDrink().getPrice()}" class="flex justify-start"></td>
-                        <td  class="flex justify-start">
-                            <button class="rounded-md p-1 m-1 text-sm text-white bg-blue-500">
-                                Edit
-                            </button>
-                            <button class="rounded-md p-1 m-1 text-sm text-white bg-red-600">
-                                Delete
-                            </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="flex justify-end">
-                <button class="rounded-md p-2 m-1 text-white bg-green-700" onclick="openCal()">
-                    Check Out
-                </button>
-            </div>
-        </div>
-    </div>
-	<!-- The pop-up form -->
-	<div id="myForm" class="popup-form">
-		<!-- Form content -->
-		<div class="popup-form-content bg-white p-4 rounded w-1/2">
-			<h2 class="text-lg font-bold mb-2">Customize Your Order</h2>
-			<form method="POST" th:object="${order}" th:action="@{/save_order}">
-                <input th:field="*{drink_id}" id="sDrinkId" type="number" class="hidden">
-				<div class="mb-4">
-					<label class="block text-gray-700 font-bold mb-2" for="size">Size:</label>
-					<select th:field="*{size_id}" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="size">
-						<option th:each="size: ${sizes}" th:text="${size.name}" th:value="${size.id}"></option>
-					</select>
-				</div>
-				<div class="mb-4">
-					<label class="block text-gray-700 font-bold mb-2" for="flavor">Flavor:</label>
-					<div class="">
-						<div class="mr-4">
-							<input th:field="*{addon_ids}" type="checkbox" id="cream" name="cream" th:value="${cream.id}">
-							<label class="ml-2" for="cream">Cream</label>
-						</div>
-						<div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="sugar">Sugar:</label>
-                            <select th:field="*{addon_ids}" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sugar">
-                                <option th:each="sugar: ${sugars}" th:text="${sugar.value + '%'}" th:value="${sugar.id}"></option>
-                            </select>
-						</div>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .wrapper {
+      width: 80%;
+      margin: auto;
+      display: flex;
+      /* justify-items: center; */
+      /* text-align: center; */
+      height: 600px;
+      border: 1px solid gray;
+      margin: auto;
+    }
+    .container_drinks {
+      width: 50%;
+    }
+    .drink_scroll {
+      display: flex;
+      justify-content: center;
+      margin: auto;
+      padding: 10px;
+      width: 96%;
+    }
+    .drinks {
+      text-align: center;
+      background-color: #652a0f;
+      color: #fff;
+      min-width: 100px;
+      height: 55px;
+      margin: auto 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+    }
+    .left_scroll {
+      background-color: #652a0f;
+      width: 80px;
+      height: 65px;
+      justify-content: start;
+    }
+    .left_scroll i {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+    }
+    .right_scroll {
+      background-color: #652a0f;
+      width: 80px;
+      height: 65px;
+      justify-content: end;
+    }
+    .right_scroll i {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+    }
+    .drink_types {
+      background-color: #ffff;
+      display: flex;
+      border: 2px solid #652a0f;
+      width: 600px;
+      height: 60px;
+      margin: auto;
+      overflow: auto;
+      scroll-behavior: smooth;
+    }
+    .drink_types::-webkit-scrollbar {
+      display: none;
+    }
+    .line1 {
+      border-top: 1px solid gray;
+      width: 90%;
+      margin: auto;
+    }
+    .drink_menu {
+      height: 600px;
+      padding: 10px;
+      margin: 12px;
+    }
+    .cafe {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 4px;
+    }
+    img {
+      width: 135px;
+      height: 110px;
+    }
+    .cafe-row {
+      width: 100%;
+      position: relative;
+      background-color: #ca8f73;
+    }
+    .cafe-name {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.578);
+      height: min-content;
+      z-index: 2;
+      font-size: 20px;
+      text-align: center;
+      padding: 0.3rem 0.6rem;
+      font-size: 14px;
+    }
+    .order_info {
+      width: 50%;
+      background-color: #ca8f73;
+    }
+    .order_info > h2 {
+      text-align: center;
+      font-size: 40px;
+      padding: 20px;
+      /* color: #f9dccc; */
+    }
+    .display_info {
+      display: grid;
+      grid-template-columns: 1fr 0.7fr 0.4fr;
+      font-size: 18px;
+      height: 40px;
+      align-items: center;
+      align-content: center;
+      padding-left: 35px;
+    }
+    .display_info:hover {
+      background-color: #ffece1;
+    }
+    .id_title {
+      display: flex;
+    }
+    .id_title > .p_title {
+      margin-left: 35px;
+    }
+    #number {
+      border: 0;
+      background-color: transparent;
+      width: 30px;
+      font-size: 18px;
+      outline: 0;
+    }
+    .size_quantity_price {
+      display: grid;
+      grid-template-columns: auto auto auto;
+    }
+    .edit_delete > svg {
+      margin-right: 30px;
+    }
+    .line2 {
+      border-top: 1px solid #f8dccc;
+      width: 90%;
+      margin: auto;
+      margin-bottom: 10px;
+    }
 
-					</div>
-				</div>
-				<div class="mb-4">
-					<div class="mb-4">
-						<label class="block text-gray-700 font-bold mb-2" for="amount">Amount:</label>
-                        <input th:field="*{amount}" type="number" id="amount" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-					</div>
-					<div class="flex justify-end">
-						<button type="button" onclick="closeForm()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-4">Cancel</button>
-						<button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Submit</button>
-					</div>
-				</div>
-				</form>
-			</div>
-		</div>
-	</div>
-    <!-- pop-up form 2 -->
-    <div id="myForm2" class="w-[100vw] h-[100vh] hidden fixed top-0 left-0 bg-[rgba(0,0,0,0.4)]">
-        <div class="w-full h-full flex items-center justify-center">
-            <div id="calculator" class="bg-white p-4 rounded shadow-lg w-1/3 popup-form2">
-                <input id="display" class="w-full mb-4 p-2 border border-gray-300 rounded" readonly>
-                <div class="text-gray-600">Total: 0.00</div>
-                <div class="text-gray-600">Change: 0.00</div>
-                <div class="grid grid-cols-4 gap-2">
-                  <button class="h-14 number bg-gray-200 p-2 rounded">7</button>
-                  <button class="h-14 number bg-gray-200 p-2 rounded">8</button>
-                  <button class="h-14 number bg-gray-200 p-2 rounded">9</button>
-                  <button class="h-14 operator bg-red-600 text-white p-2 rounded">del</button>
-                  <button class="h-14 number bg-gray-200 p-2 rounded">4</button>
-                  <button class="h-14 number bg-gray-200 p-2 rounded">5</button>
-                  <button class="h-14 number bg-gray-200 p-2 rounded">6</button>
-                  <button class="h-14 operator bg-white text-white p-2 rounded"></button>
-                  <button class="h-14 number bg-gray-200 p-2 rounded">1</button>
-                  <button class="h-14 number bg-gray-200 p-2 rounded">2</button>
-                  <button class="h-14 number bg-gray-200 p-2 rounded">3</button>
-                  <button class="h-14 operator bg-white text-white p-2 rounded"></button>
-                  <button class="h-14 number bg-gray-200 p-2 rounded">0</button>
-                  <button class="h-14 operator bg-blue-400 text-white p-2 rounded">.</button>
-                  <button id="equals" class="h-14 bg-green-400 text-white p-2 rounded">OK</button>
-                  <button class="h-14 operator bg-red-500 text-white p-2 rounded" onclick="closeCal()">Cancel</button>
-                </div>
+    @media only screen and (max-width: 768px) {
+      .cafe {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 6px;
+      }
+      .order_info > h2 {
+        text-align: center;
+        font-size: 30px;
+        padding: 7px;
+      }
+      .display_info {
+        display: grid;
+        grid-template-columns: auto;
+        font-size: 12px;
+        height: 40px;
+        align-items: center;
+        align-content: center;
+        padding-left: 35px;
+      }
+      .display_info:hover {
+        background-color: #ffece1;
+      }
+      #number {
+        border: 0;
+        background-color: transparent;
+        width: 20px;
+        font-size: 12px;
+        outline: 0;
+      }
+    }
+    @media only screen and (max-width: 992px) {
+    }
+    @media only screen and (max-width: 1200px) {
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <div class="container_drinks">
+        <div class="row drink_scroll">
+          <div class="left_scroll">
+            <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+          </div>
+          <div class="drink_types">
+            <button
+              class="drinks cool_drinks"
+              onclick="openDrinkMenu('iced_container' ,this, '#80471c')"
+              id="defaultOpen"
+              style="outline: none"
+            >
+              Cool Drinks
+            </button>
+            <button
+              class="drinks hot_drinks"
+              onclick="openDrinkMenu('hot_container' ,this, '#80471c')"
+              style="outline: none"
+            >
+              Hot Drinks
+            </button>
+            <button
+              class="drinks frappes"
+              onclick="openDrinkMenu('frappe_container' ,this, '#80471c')"
+              style="outline: none"
+            >
+              Frappes
+            </button>
+            <button
+              class="drinks latte"
+              onclick="openDrinkMenu('frappe_container' ,this, '#80471c')"
+            >
+              Latte
+            </button>
+            <button
+              class="drinks mocha"
+              onclick="openDrinkMenu('frappe_container' ,this, '#80471c')"
+            >
+              Mocha
+            </button>
+          </div>
+          <div class="right_scroll">
+            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="row line1"></div>
+        <div class="row drink_menu">
+          <div id="hot_container" class="drink_content">
+            <div class="hot cafe">
+              <div class="cafe-row">
+                <img src="hot-latte1.png" alt="hot-cafe-latte1" />
+                <p class="cafe-name">Hot Latte</p>
+              </div>
+              <div class="cafe-row">
+                <img src="flat-white.png" alt="flat-white" />
+                <p class="cafe-name">Flat White</p>
+              </div>
+              <div class="cafe-row">
+                <img src="cappucino.png" alt="Cappuccino" />
+                <p class="cafe-name">Cappuccino</p>
+              </div>
+              <div class="cafe-row">
+                <img src="hot-mocha.png" alt="hot-mocha" />
+                <p class="cafe-name">Hot Mocha</p>
+              </div>
+              <div class="cafe-row">
+                <img src="hot-chocolate.png" alt="hot-chocolate" />
+                <p class="cafe-name">Hot Chocolate</p>
+              </div>
+              <div class="cafe-row">
+                <img src="chai-latte.png" alt="chai-latte" />
+                <p class="cafe-name">Chai Latte</p>
+              </div>
+            </div>
+          </div>
+          <div id="frappe_container" class="drink_content">
+            <div class="frappe cafe">
+              <div class="cafe-row">
+                <img src="caramel-frappe.png" alt="caramel frappe" />
+                <p class="cafe-name">Caramel Frappe</p>
+              </div>
+              <div class="cafe-row">
+                <img
+                  src="caramel-macchiato.png"
+                  alt="caramel macchiato"
+                  style="
+                    width: 80px;
+                    height: 90px;
+                    margin-top: 7px;
+                    margin-left: 30px;
+                  "
+                />
+                <p class="cafe-name">Caramel Macchiato</p>
+              </div>
+              <div class="cafe-row">
+                <img
+                  src="cocoa.png"
+                  alt="cocoa"
+                  style="
+                    width: 60px;
+                    height: 85px;
+                    margin-top: 11px;
+                    margin-left: 37px;
+                  "
+                />
+                <p class="cafe-name">Cocoa Frappe</p>
+              </div>
+              <div class="cafe-row">
+                <img src="cream-frappe.png" alt="cream frappe" />
+                <p class="cafe-name">Cream Frappe</p>
+              </div>
+              <div class="cafe-row">
+                <img
+                  src="mocha-frappe.png"
+                  alt="mocha frappe"
+                  style="
+                    width: 60px;
+                    height: 92px;
+                    margin-left: 37px;
+                    margin-top: 5px;
+                  "
+                />
+                <p class="cafe-name">Mocha Frappe</p>
+              </div>
+            </div>
+          </div>
+          <div id="iced_container" class="drink_content">
+            <div class="iced cafe">
+              <div class="cafe-row">
+                <img
+                  src="ice-cafe-cream.png"
+                  alt="iced cafe cream"
+                  style="
+                    width: 84px;
+                    height: 96px;
+                    margin-left: 25px;
+                    margin-top: 5px;
+                  "
+                />
+                <p class="cafe-name">Iced Cafe Cream</p>
+              </div>
+              <div class="cafe-row">
+                <img
+                  src="IceAmericano.jpg"
+                  alt="iced americano"
+                  style="
+                    width: 67px;
+                    height: 90px;
+                    margin-top: 9px;
+                    margin-left: 35px;
+                  "
+                />
+                <p class="cafe-name">Iced Americano</p>
+              </div>
+              <div class="cafe-row">
+                <img
+                  src="ice-chocolate-milk.png"
+                  alt="ice-chocolate-milk"
+                  style="
+                    width: 60px;
+                    height: 85px;
+                    margin-top: 11px;
+                    margin-left: 37px;
+                  "
+                />
+                <p class="cafe-name">Iced Chocolate</p>
               </div>
 
+              <div class="cafe-row">
+                <img src="cream-frappe.png" alt="cream frappe" />
+                <p class="cafe-name">Caramel Frappe</p>
+              </div>
+              <div class="cafe-row">
+                <img
+                  src="mocha-frappe.png"
+                  alt="mocha frappe"
+                  style="
+                    width: 60px;
+                    height: 92px;
+                    margin-left: 37px;
+                    margin-top: 5px;
+                  "
+                />
+                <p class="cafe-name">Mocha Frappe</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="order_info">
+        <h2>Order Information</h2>
+        <div class="line2"></div>
+        <div class="display_info">
+          <div class="id_title">
+            <p>1</p>
+            <p class="p_title">Iced Americano</p>
+          </div>
+          <div class="size_quantity_price">
+            <p>R</p>
+            <input id="number" type="number" value="1" min="0" />
+            <p>2.3</p>
+          </div>
+          <div class="edit_delete">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15px"
+              height="20px"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15px"
+              height="20px"
+              viewBox="0 0 448 512"
+            >
+              <path
+                d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="display_info">
+          <div class="id_title">
+            <p>2</p>
+            <p class="p_title">Hot Latte</p>
+          </div>
+          <div class="size_quantity_price">
+            <p>R</p>
+            <input id="number" type="number" value="1" min="0" />
+            <p>2.5</p>
+          </div>
+          <div class="edit_delete">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15px"
+              height="20px"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15px"
+              height="20px"
+              viewBox="0 0 448 512"
+            >
+              <path
+                d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
     </div>
+
     <script>
-        // category part
-        const buttons = document.getElementsByClassName("category");
-        const buttonPressed = e => {
-            let catID = e.target.id;  // Get ID of Clicked Element
+      const prev_scroll = document.querySelector(".left_scroll");
+      const next_scroll = document.querySelector(".right_scroll");
+      const drink_type_scroll = document.querySelector(".drink_types");
 
-            for (let button of buttons) {
-                button.style.backgroundColor = "#343f50"
-            }
-            document.getElementById(catID).style.backgroundColor = "black"
+      prev_scroll.addEventListener("click", () => {
+        drink_type_scroll.scrollLeft -= 350;
+      });
 
-            let hides = document.getElementsByClassName("dcontent");
-            for (let hide of hides) {
-                hide.style.display = "none";
-            }
-            document.getElementById("dcontent" + catID).style.display = "grid";
-        }
-        for (let button of buttons) {
-            button.addEventListener("click", buttonPressed);
-        }
-        buttons[0].click();
+      next_scroll.addEventListener("click", () => {
+        drink_type_scroll.scrollLeft += 350;
+      });
 
-        // select drink part
-        const drinks = document.getElementsByClassName("drink");
-        const drinkSelected = e => {
-            let drinkID = e.target.id;  // Get ID of Clicked Element
-            console.log(drinkID);
-            document.getElementById("sDrinkId").value = drinkID+"";
-            openForm()
+      function openDrinkMenu(drink_type_name, ele, color) {
+        var i, drink_content, drinks;
+        drink_content = document.getElementsByClassName("drink_content");
+        for (i = 0; i < drink_content.length; i++) {
+          drink_content[i].style.display = "none";
         }
-        for (let drink of drinks) {
-            drink.addEventListener("click", drinkSelected);
+        drinks = document.getElementsByClassName("drinks");
+        for (i = 0; i < drinks.length; i++) {
+          drinks[i].style.backgroundColor = "";
         }
-
-        /* Function to open the pop-up form */
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
-        }
-
-        /* Function to close the pop-up form */
-        function closeForm() {
-            document.getElementById("myForm").style.display = "none";
-        }
-
-        /* Function to open the pop-up form */
-        function openCal() {
-            document.getElementById("myForm2").style.display = "block";
-        }
-
-        /* Function to close the pop-up form */
-        function closeCal() {
-            document.getElementById("myForm2").style.display = "none";
-        }
+        document.getElementById(drink_type_name).style.display = "block";
+        ele.style.backgroundColor = color;
+      }
+      document.getElementById("defaultOpen").click();
     </script>
-</body>
+  </body>
 </html>
