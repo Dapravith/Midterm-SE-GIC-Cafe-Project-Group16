@@ -1,171 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GIC Café</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
-
-      * {
-        margin: 0;
-        padding: 0;
-      }
-
-      button {
-        font-family: "Lexend", sans-serif;
-      }
-    </style>
+    <title>table Selection</title>
+    <link rel="stylesheet" href="" th:href="@{css/tableSelection.css}" />
   </head>
-  <body class="flex justify-content items-center mx-20 my-20">
-    <div class="w-full grid grid-cols-2 border-2 border-black">
-      <div
-        class="w-full grid grid-cols-5 gap-4 mx-3 my-3 font-[-apple-system] text-3xl font-bold"
-      >
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          01
-        </button>
-        <button
-          class="w-20 h-20 bg-orange-600 border-2 border-black text-white text-center"
-        >
-          02
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          03
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          04
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          05
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          06
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          07
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          08
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          09
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          10
-        </button>
-
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          11
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          12
-        </button>
-        <button
-          class="w-20 h-20 bg-green-600 border-2 border-black text-white text-center"
-        >
-          13
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          14
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          15
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          16
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          17
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          18
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          19
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          20
-        </button>
-
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          21
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          22
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          23
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          24
-        </button>
-        <button
-          class="w-20 h-20 bg-red-600 border-2 border-black text-white text-center"
-        >
-          25
-        </button>
+  <body>
+    <div id="container">
+      <div class="table_container">
+        <div class="box">1</div>
+        <div class="box unpaid">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+        <div class="box">10</div>
+        <div class="box">11</div>
+        <div class="box">12</div>
+        <div class="box">13</div>
+        <div class="box busy">14</div>
+        <div class="box busy">15</div>
+        <div class="box busy">16</div>
+        <div class="box busy">17</div>
+        <div class="box busy">18</div>
+        <div class="box busy">19</div>
+        <div class="box busy">20</div>
+        <div class="box busy">21</div>
+        <div class="box busy">22</div>
+        <div class="box busy">23</div>
+        <div class="box busy">24</div>
+        <div class="box busy">25</div>
       </div>
+      <div class="infor_container">
+        <div class="sub_infor">
+          <h1>Table Information</h1>
+          <br />
+          <br />
 
-      <div class="border-black border-l-2 py-28">
-        <p class="text-3xl font-bold text-center">Table Information</p>
-
-        <div class="ml-[150px] mt-[30px] w-full text-2xl">
-          <div class="w-[400px] grid grid-col-1">
-            <p>Table: <span>&nbsp;&nbsp;&thinsp;02,</span></p>
-            <p>Status: <span>&nbsp;&thinsp;available/busy/unpaid</span></p>
-            <p>
-              Orders: <span>&nbsp;Iceamericano (R x 1), Icemocha(L x 1)</span>
-            </p>
+          <div class="number">
+            <div class="label">Table&nbsp;&nbsp;&nbsp;:</div>
+            <div class="datas tb_table" contenteditable="true">02</div>
+          </div>
+          <div class="status">
+            <div class="label">Status&nbsp;&nbsp;:</div>
+            <div class="datas tb_status" contenteditable="true">Available</div>
+          </div>
+          <div class="order">
+            <div class="label">Orders&nbsp;:</div>
+            <div class="datas">
+              <div class="data" contenteditable="true">
+                Ice americano (R x 1)
+              </div>
+              <div class="data" contenteditable="true">Ice mocha (L x 1)</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      document
+        .querySelector(".table_container")
+        .addEventListener("click", (e) => {
+          const target = e.target;
+          if (target.classList.contains("box")) {
+            document.querySelector(".tb_table").innerHTML = target.innerText;
+            if (target.classList.contains("busy")) {
+              document.querySelector(".tb_status").innerHTML = "Busy";
+            } else if (target.classList.contains("unpaid")) {
+              document.querySelector(".tb_status").innerHTML = "Unpaid";
+            } else {
+              document.querySelector(".tb_status").innerHTML = "Available";
+            }
+          }
+        });
+    </script>
   </body>
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script> -->
+    <title>table</title>
+</head>
+<body>
+    <div id="container">
+        <div class="table_container">
+            <div class="box">1</div>
+            <div class="box unpaid">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+            <div class="box">6</div>
+            <div class="box">7</div>
+            <div class="box">8</div>
+            <div class="box">9</div>
+            <div class="box">10</div>
+            <div class="box">11</div>
+            <div class="box">12</div>
+            <div class="box">13</div>
+            <div class="box busy">14</div>
+            <div class="box busy">15</div>
+            <div class="box busy">16</div>
+            <div class="box busy">17</div>
+            <div class="box busy">18</div>
+            <div class="box busy">19</div>
+            <div class="box busy">20</div>
+            <div class="box busy">21</div>
+            <div class="box busy">22</div>
+            <div class="box busy">23</div>
+            <div class="box busy">24</div>
+            <div class="box busy">25</div>
+        </div>
+        <div class="infor_container">
+            <div class="sub_infor">
+                <h1>Table Information</h1>
+                <br>
+                <br>
+                
+                <div class="number">
+                    <div class="label">Table&nbsp;&nbsp;&nbsp;: </div>
+                    <div class="datas tb_table" contenteditable="true">02</div>
+                </div>
+                <div class="status">
+                    <div class="label">Status&nbsp;&nbsp;: </div>
+                    <div class="datas tb_status" contenteditable="true">Available</div>
+                </div>
+                <div class="order">
+                    <div class="label">Orders&nbsp;:</div>
+                    <div class="datas">
+                        <div class="data" contenteditable="true">Ice americano (R x 1)</div>
+                        <div class="data" contenteditable="true">Ice mocha (L x 1)</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+            *, *::after, *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        :root {
+        --bg-available:#4e961b;
+        --bg-unpaid:#c55a11;
+        --bg-busy:#ff0000;
+        --bg-main:#f1f1f1;
+        --bg-infor:#deebf7;
+        }
+
+        body {
+        min-width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        body #container {
+        min-width: 90%;
+        background-color: var(--bg-main);
+        border-radius: 3px;
+        border: 2px solid black;
+        display: flex;
+        }
+        body #container > div {
+        width: 100%;
+        }
+        body #container .table_container {
+        --size-gap:.7rem;
+        padding: var(--size-gap);
+        background-color: var(--bg-main);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: var(--size-gap);
+        }
+        body #container .table_container .box {
+        background-color: var(--bg-available);
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        border-radius: 2px;
+        cursor: pointer;
+        color: white;
+        }
+        body #container .table_container .box.busy {
+        background-color: var(--bg-busy);
+        }
+        body #container .table_container .box.unpaid {
+        background-color: var(--bg-unpaid);
+        }
+        body #container .infor_container {
+        background-color: var(--bg-infor);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        body #container .infor_container .sub_infor {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        }
+        body #container .infor_container .sub_infor h1 {
+        text-align: center;
+        }
+        body #container .infor_container .sub_infor > div {
+        display: flex;
+        gap: 1rem;
+        font-size: 1.5rem;
+        }/*# sourceMappingURL=style.css.map */
+    </style>
+    <script>
+        document.querySelector(".table_container").addEventListener('click',(e)=>{
+            const target=e.target;
+            if(target.classList.contains('box')){
+                document.querySelector('.tb_table').innerHTML=target.innerText;
+                if(target.classList.contains('busy')){
+                    document.querySelector('.tb_status').innerHTML="Busy"
+                }else if(target.classList.contains('unpaid')){
+                    document.querySelector('.tb_status').innerHTML="Unpaid"
+                }else{
+                    document.querySelector('.tb_status').innerHTML="Available"
+                }
+            }
+        })
+
+    </script>
+
+</body>
+>>>>>>> b5af04d278ecd638045705b41a87f09e951a0f33
 </html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Edit Cashier</title>
+  </head>
+  <style>
+    .container {
+      width: 60%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+    }
+    .row {
+      border: 2px solid rgb(107, 107, 107);
+    }
+    .new_cashier {
+      font-weight: bold;
+      font-size: 22px;
+      border-bottom: 0;
+      padding: 10px;
+    }
+    .btn2 {
+      margin-top: 25px;
+    }
+    .input_info {
+      padding: 10px;
+    }
+    .input_info > div > div {
+      margin-top: 10px;
+    }
+    input,
+    select {
+      float: right;
+      margin-right: 30px;
+      width: 170px;
+      height: 20px;
+    }
+    input[type="date"] {
+      width: 173px;
+      height: 23px;
+    }
+    select {
+      width: 177px;
+      height: 25px;
+    }
+    .input_field {
+      display: grid;
+      grid-template-columns: 1fr 0.1fr 1fr;
+    }
+    .add_info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .btn_ok {
+      width: 230px;
+      height: 30px;
+      background-color: #0d9e17;
+      color: #fff;
+      border: 0;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .btn_cancel {
+      width: 130px;
+      height: 30px;
+      float: right;
+      margin-right: 30px;
+      background-color: #652a0e;
+      border: 0;
+      color: #fff;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .img_cashier {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .img_bg {
+      width: 300px;
+      height: 250px;
+      background-color: #f0e7e0;
+      z-index: 1;
+      position: absolute;
+    }
+    .img_cashier > img {
+      position: absolute;
+      width: 200px;
+      z-index: 2;
+    }
+    /* .display_img{
+        position: absolute;
+        width: 200px;
+        height: 250px;
+        z-index: 3;
+    } */
+    @media only screen and (max-width: 768px) {
+      .container {
+        width: 95%;
+        font-size: 18px;
+      }
+      input,
+      select {
+        margin-right: 20px;
+        width: 150px;
+      }
+      input[type="date"] {
+        width: 153px;
+        height: 23px;
+      }
+      select {
+        width: 157px;
+        height: 25px;
+      }
+      .btn_ok {
+        width: 200px;
+      }
+      .btn_cancel {
+        width: 80px;
+        margin-right: 20px;
+      }
+      .img_bg {
+        width: 250px;
+        height: 200px;
+      }
+      .img_cashier > img {
+        width: 150px;
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <form action="">
+        <div class="row new_cashier">New Cashier</div>
+        <div class="row add_info">
+          <div class="input_info">
+            <div class="input_row">
+              <div class="input_field">
+                <label for="">First name</label>
+                <label>:</label>
+                <input type="text" />
+              </div>
+              <div class="input_field">
+                <label for="">Last name</label>
+                <label>:</label>
+                <input type="text" name="" id="" />
+              </div>
+              <div class="input_field">
+                <label for="">Sex</label>
+                <label>:</label>
+                <select name="" id="">
+                  <option value="1">Male :</option>
+                  <option value="2">Female :</option>
+                </select>
+              </div>
+              <div class="input_field">
+                <label for="">Date of Birth</label>
+                <label>:</label>
+                <input type="date" />
+              </div>
+              <div class="input_field">
+                <label for="">Login</label>
+                <label>:</label>
+                <input type="text" />
+              </div>
+              <div class="input_field">
+                <label for="">Password</label>
+                <label>:</label>
+                <input type="password" />
+              </div>
+            </div>
+            <div class="btn2">
+              <button class="btn_ok">OK</button>
+              <button class="btn_cancel">Cancel</button>
+            </div>
+          </div>
+          <div class="img_cashier">
+            <div class="img_bg"></div>
+            <img src="./images/avatar.jpg" alt="" />
+            <!-- <input type="file" id="myImg" accept="image/png, image/jpg"> -->
+            <!-- <div id="display_img"></div> -->
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const myImg = document.querySelector("#myImg");
+      var uploaded_img = "";
+
+      myImg.addEventListener("change", function () {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+          uploaded_img = reader.result;
+          document.querySelector(
+            "#display_img"
+          ).style.backgroundImage = `url(${uploaded_img})`;
+        });
+        reader.readAsDataURL(this.files[0]);
+      });
+    </script>
+  </body>
+</html>
