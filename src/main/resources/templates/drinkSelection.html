@@ -4,13 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Drink Selection</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
   </head>
   <style>
     * {
@@ -19,13 +17,13 @@
       box-sizing: border-box;
     }
     .wrapper {
-      width: 80%;
+      width: 92%;
       margin: auto;
       display: flex;
-      /* justify-items: center; */
-      /* text-align: center; */
-      height: 600px;
-      border: 1px solid gray;
+      justify-items: center;
+      text-align: center;
+      height: 500px;
+      border: 3px solid black;
       margin: auto;
     }
     .container_drinks {
@@ -36,11 +34,11 @@
       justify-content: center;
       margin: auto;
       padding: 10px;
-      width: 96%;
+      width: 90%;
     }
     .drinks {
       text-align: center;
-      background-color: #652a0f;
+      background-color: rgb(25, 25, 112);
       color: #fff;
       min-width: 100px;
       height: 55px;
@@ -48,10 +46,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border: none;
+      border: black;
     }
     .left_scroll {
-      background-color: #652a0f;
+      background-color: rgb(25, 25, 112);
       width: 80px;
       height: 65px;
       justify-content: start;
@@ -64,7 +62,7 @@
       color: white;
     }
     .right_scroll {
-      background-color: #652a0f;
+      background-color: rgb(25, 25, 112);
       width: 80px;
       height: 65px;
       justify-content: end;
@@ -77,20 +75,21 @@
       color: white;
     }
     .drink_types {
-      background-color: #ffff;
+      background-color: rgb(65, 105, 225);
       display: flex;
-      border: 2px solid #652a0f;
+      border: 2px solid rgb(25, 25, 112);
       width: 600px;
       height: 60px;
       margin: auto;
       overflow: auto;
       scroll-behavior: smooth;
+      cursor: pointer;
     }
     .drink_types::-webkit-scrollbar {
       display: none;
     }
     .line1 {
-      border-top: 1px solid gray;
+      border-top: 3px solid gray;
       width: 90%;
       margin: auto;
     }
@@ -102,16 +101,19 @@
     .cafe {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 4px;
+      gap: 5px;
     }
     img {
-      width: 135px;
-      height: 110px;
+      width: 130px;
+      height: 115px;
     }
     .cafe-row {
       width: 100%;
       position: relative;
-      background-color: #ca8f73;
+      cursor: pointer;
+      margin: 20px;
+      padding: 2px;
+      background-color: rgb(240, 248, 255);
     }
     .cafe-name {
       position: absolute;
@@ -128,13 +130,13 @@
     }
     .order_info {
       width: 50%;
-      background-color: #ca8f73;
+      background-color: rgb(224, 255, 255);
     }
     .order_info > h2 {
       text-align: center;
       font-size: 40px;
       padding: 20px;
-      /* color: #f9dccc; */
+      color: #f9dccc;
     }
     .display_info {
       display: grid;
@@ -146,7 +148,8 @@
       padding-left: 35px;
     }
     .display_info:hover {
-      background-color: #ffece1;
+      background-color: rgb(255, 228, 181);
+      cursor: pointer;
     }
     .id_title {
       display: flex;
@@ -206,10 +209,6 @@
         outline: 0;
       }
     }
-    @media only screen and (max-width: 992px) {
-    }
-    @media only screen and (max-width: 1200px) {
-    }
   </style>
   <body>
     <div class="wrapper">
@@ -221,7 +220,7 @@
           <div class="drink_types">
             <button
               class="drinks cool_drinks"
-              onclick="openDrinkMenu('iced_container' ,this, '#80471c')"
+              onclick="openDrinkMenu('iced_container' ,this, '#F4A460')"
               id="defaultOpen"
               style="outline: none"
             >
@@ -229,27 +228,27 @@
             </button>
             <button
               class="drinks hot_drinks"
-              onclick="openDrinkMenu('hot_container' ,this, '#80471c')"
+              onclick="openDrinkMenu('hot_container' ,this, '#F4A460')"
               style="outline: none"
             >
               Hot Drinks
             </button>
             <button
               class="drinks frappes"
-              onclick="openDrinkMenu('frappe_container' ,this, '#80471c')"
+              onclick="openDrinkMenu('frappe_container' ,this, '#F4A460')"
               style="outline: none"
             >
               Frappes
             </button>
             <button
-              class="drinks latte"
-              onclick="openDrinkMenu('frappe_container' ,this, '#80471c')"
+              class="drinks milk"
+              onclick="openDrinkMenu('milk_container' ,this, '#F4A460')"
             >
-              Latte
+              Milk Tea
             </button>
             <button
               class="drinks mocha"
-              onclick="openDrinkMenu('frappe_container' ,this, '#80471c')"
+              onclick="openDrinkMenu('mocha_container' ,this, '#F4A460')"
             >
               Mocha
             </button>
@@ -263,78 +262,58 @@
           <div id="hot_container" class="drink_content">
             <div class="hot cafe">
               <div class="cafe-row">
-                <img src="hot-latte1.png" alt="hot-cafe-latte1" />
+                <img src="images/hot-latte.jpg" alt="hot-cafe-latte" />
                 <p class="cafe-name">Hot Latte</p>
               </div>
               <div class="cafe-row">
-                <img src="flat-white.png" alt="flat-white" />
+                <img src="images/flat-white.jpg" alt="flat-white" />
                 <p class="cafe-name">Flat White</p>
               </div>
               <div class="cafe-row">
-                <img src="cappucino.png" alt="Cappuccino" />
+                <img src="images/capusino.jpg" alt="Cappuccino" />
                 <p class="cafe-name">Cappuccino</p>
               </div>
+
               <div class="cafe-row">
-                <img src="hot-mocha.png" alt="hot-mocha" />
+                <img src="images/hot-mocha.jpg" alt="hot-mocha" />
                 <p class="cafe-name">Hot Mocha</p>
               </div>
               <div class="cafe-row">
-                <img src="hot-chocolate.png" alt="hot-chocolate" />
-                <p class="cafe-name">Hot Chocolate</p>
+                <img src="images/hot-expresso.jpg" alt="hot-expresso" />
+                <p class="cafe-name">Hot Expresso</p>
               </div>
               <div class="cafe-row">
-                <img src="chai-latte.png" alt="chai-latte" />
-                <p class="cafe-name">Chai Latte</p>
+                <img
+                  src="images/hot-vanilla-chailatte.jpg"
+                  alt="vanilla-chai-latte"
+                />
+                <p class="cafe-name">Hot Vanilla Chai Latte</p>
               </div>
             </div>
           </div>
           <div id="frappe_container" class="drink_content">
             <div class="frappe cafe">
               <div class="cafe-row">
-                <img src="caramel-frappe.png" alt="caramel frappe" />
+                <img src="images/caremel-frappe.jpg" alt="caramel frappe" />
                 <p class="cafe-name">Caramel Frappe</p>
               </div>
               <div class="cafe-row">
                 <img
-                  src="caramel-macchiato.png"
-                  alt="caramel macchiato"
-                  style="
-                    width: 80px;
-                    height: 90px;
-                    margin-top: 7px;
-                    margin-left: 30px;
-                  "
+                  src="images/caremel-machitto-frappe.jpg"
+                  alt="caramel macchiato frappe"
                 />
                 <p class="cafe-name">Caramel Macchiato</p>
               </div>
               <div class="cafe-row">
-                <img
-                  src="cocoa.png"
-                  alt="cocoa"
-                  style="
-                    width: 60px;
-                    height: 85px;
-                    margin-top: 11px;
-                    margin-left: 37px;
-                  "
-                />
-                <p class="cafe-name">Cocoa Frappe</p>
+                <img src="images/greentea-frappe.jpg" alt="greentea" />
+                <p class="cafe-name">Green Tea Frappe</p>
               </div>
               <div class="cafe-row">
-                <img src="cream-frappe.png" alt="cream frappe" />
+                <img src="images/cream-frappe.jpg" alt="cream frappe" />
                 <p class="cafe-name">Cream Frappe</p>
               </div>
               <div class="cafe-row">
-                <img
-                  src="mocha-frappe.png"
-                  alt="mocha frappe"
-                  style="
-                    width: 60px;
-                    height: 92px;
-                    margin-left: 37px;
-                    margin-top: 5px;
-                  "
-                />
+                <img src="images/mocha-frappe.jpg" alt="mocha frappe" />
                 <p class="cafe-name">Mocha Frappe</p>
               </div>
             </div>
@@ -342,66 +321,85 @@
           <div id="iced_container" class="drink_content">
             <div class="iced cafe">
               <div class="cafe-row">
-                <img
-                  src="ice-cafe-cream.png"
-                  alt="iced cafe cream"
-                  style="
-                    width: 84px;
-                    height: 96px;
-                    margin-left: 25px;
-                    margin-top: 5px;
-                  "
-                />
+                <img src="images/ice-cafe-cream.jpg" alt="iced cafe cream" />
                 <p class="cafe-name">Iced Cafe Cream</p>
               </div>
               <div class="cafe-row">
-                <img
-                  src="IceAmericano.jpg"
-                  alt="iced americano"
-                  style="
-                    width: 67px;
-                    height: 90px;
-                    margin-top: 9px;
-                    margin-left: 35px;
-                  "
-                />
+                <img src="images/IceAmericano.jpg" alt="iced americano" />
                 <p class="cafe-name">Iced Americano</p>
               </div>
               <div class="cafe-row">
-                <img
-                  src="ice-chocolate-milk.png"
-                  alt="ice-chocolate-milk"
-                  style="
-                    width: 60px;
-                    height: 85px;
-                    margin-top: 11px;
-                    margin-left: 37px;
-                  "
-                />
+                <img src="images/IceCholcolate.jpg" alt="IceCholcolate" />
                 <p class="cafe-name">Iced Chocolate</p>
               </div>
 
               <div class="cafe-row">
-                <img src="cream-frappe.png" alt="cream frappe" />
-                <p class="cafe-name">Caramel Frappe</p>
+                <img src="images/mocha-cholcolate.jpg" alt="Mocha Chocolate" />
+                <p class="cafe-name">Mocha Chocolate</p>
+              </div>
+              <div class="cafe-row">
+                <img src="images/ice-latte-cafe.jpg" alt="Ice latte" />
+                <p class="cafe-name">Ice Latte Cafe</p>
+              </div>
+              <div class="cafe-row">
+                <img src="images/cool-mocha.jpg" alt="cool mocha" />
+                <p class="cafe-name">Cool Mocha</p>
+              </div>
+            </div>
+          </div>
+          <div id="milk_container" class="drink_content">
+            <div class="milk cafe">
+              <div class="cafe-row">
+                <img src="images/bubble-milktea.jpg" alt="Bubble Milk Tea" />
+                <p class="cafe-name">Bubble Milk Tea</p>
+              </div>
+              <div class="cafe-row">
+                <img src="images/brown-surgar.jpg" alt="Bubble Milk Tea" />
+                <p class="cafe-name">Brown Surgar Milk Tea</p>
+              </div>
+              <div class="cafe-row">
+                <img src="images/honey-milktea.jpeg" alt="Honey Milk Tea" />
+                <p class="cafe-name">Honey Milk Tea</p>
               </div>
               <div class="cafe-row">
                 <img
-                  src="mocha-frappe.png"
-                  alt="mocha frappe"
-                  style="
-                    width: 60px;
-                    height: 92px;
-                    margin-left: 37px;
-                    margin-top: 5px;
-                  "
+                  src="images/caremel-cholcolate-milktea.jpg"
+                  alt="Caremel Cholcolate Milk Tea"
                 />
-                <p class="cafe-name">Mocha Frappe</p>
+                <p class="cafe-name">Caremel Chocolate Milk Tea</p>
+              </div>
+              <div class="cafe-row">
+                <img
+                  src="images/mango-bubble-tea.jpg"
+                  alt="Mango Bubble Milk Tea"
+                />
+                <p class="cafe-name">Mango Bubble Milk Tea</p>
+              </div>
+              <div class="cafe-row">
+                <img src="images/orange-milk-tea.jpg" alt="Orange Green Tea" />
+                <p class="cafe-name">Orange Green Milk Tea</p>
+              </div>
+            </div>
+          </div>
+          <div id="mocha_container" class="drink_content">
+            <div class="mocha cafe">
+              <div class="cafe-row">
+                <img src="images/latte-cafe.jpg" alt="latte-cafe" />
+                <p class="cafe-name">Latte Cafe</p>
+              </div>
+              <div class="cafe-row">
+                <img src="images/latte-cafe.jpg" alt="latte-cafe" />
+                <p class="cafe-name">Latte Cafe</p>
+              </div>
+              <div class="cafe-row">
+                <img src="images/latte-cafe.jpg" alt="latte-cafe" />
+                <p class="cafe-name">Latte Cafe</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="order_info">
         <h2>Order Information</h2>
         <div class="line2"></div>

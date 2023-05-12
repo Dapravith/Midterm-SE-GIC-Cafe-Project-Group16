@@ -5,186 +5,233 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Maven Pro", sans-serif;
+      }
+      .popup_button button {
+        margin-top: 2rem;
+        margin-left: 1rem;
+        padding: 1rem;
+      }
+      .main_wrapper {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+      .wrapper_container {
+        width: 25rem;
+        height: 33rem;
+        border: 1px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #eefbfb;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      }
+      .first_row {
+        display: flex;
+        gap: 1rem;
+      }
+      .second_row {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .third_row {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .zero_row {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        gap: 1rem;
+      }
+      .box {
+        background-color: #000080;
+        width: 4rem;
+        height: 4rem;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+      }
+      .box_cancel {
+        background-color: rgb(30, 144, 255);
+        width: 7rem;
+        height: 4rem;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+      }
+      .box_cencel:hover {
+        background-color: orange;
+        color: white;
+      }
+      .box_ok {
+        background-color: rgb(30, 144, 255);
+        width: 7rem;
+        height: 4rem;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+      }
+      .box_ok:hover {
+        background-color: orange;
+        color: white;
+      }
+      .box_ {
+        background-color: rgb(30, 144, 255);
+        width: 7rem;
+        height: 4rem;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+      }
+      .box_delete {
+        background-color: rgb(30, 144, 255);
+        width: 7rem;
+        height: 4rem;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+      }
+      .box_delete:hover {
+        background-color: orange;
+        color: white;
+      }
+      .box:hover {
+        background-color: orange;
+        color: white;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      .number_box {
+        margin-bottom: 0.5rem;
+        width: 22rem;
+        height: 4rem;
+        border: 1px solid black;
+        color: black;
+        display: flex;
+        align-items: center;
+        font-size: 3rem;
+      }
+      .total_change_row {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+    </style>
   </head>
   <body>
-    <div
-      id="myForm2"
-      class="w-[100vw] h-[100vh] fixed top-0 left-0 flex items-center justify-center"
-    >
-      <div
-        id="container"
-        class="bg-gray-50 p-4 rounded shadow-lg w-1/3 popup-form2 drop-shadow-2xl"
-      >
-        <input
-          id="result"
-          type="text"
-          class="w-full mb-4 p-2 border border-gray-300 rounded"
-          readonly
-        />
-        <span>Total: </span
-        ><span class="text-gray-600" id="total" th:text="${total}"></span>
-        <div></div>
-        <span>Change: </span><span class="text-gray-600" id="change"></span>
-        <div class="grid grid-cols-4 gap-2">
-          <button
-            onclick="appendNumber('7')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            7
-          </button>
-          <button
-            onclick="appendNumber('8')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            8
-          </button>
-          <button
-            onclick="appendNumber('9')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            9
-          </button>
-          <button
-            onclick="deleteNumber()"
-            class="h-14 operator bg-red-600 text-white p-2 rounded"
-          >
-            del
-          </button>
-          <button
-            onclick="appendNumber('4')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            4
-          </button>
-          <button
-            onclick="appendNumber('5')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            5
-          </button>
-          <button
-            onclick="appendNumber('6')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            6
-          </button>
-          <div class="h-14 operator bg-gray-50 text-white p-2 rounded"></div>
-          <button
-            onclick="appendNumber('1')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            1
-          </button>
-          <button
-            onclick="appendNumber('2')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            2
-          </button>
-          <button
-            onclick="appendNumber('3')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            3
-          </button>
-          <div class="h-14 operator bg-gray-50 text-white p-2 rounded"></div>
-          <button
-            onclick="appendNumber('0')"
-            class="h-14 number bg-gray-200 p-2 rounded"
-          >
-            0
-          </button>
-          <button
-            onclick="appendNumber('.')"
-            class="h-14 operator bg-blue-500 text-white p-2 rounded"
-          >
-            .
-          </button>
-          <form
-            action="#"
-            th:action="@{/check/save_receipt}"
-            method="post"
-            th:object="${receipt}"
-          >
-            <input
-              type="number"
-              th:field="*{invoice_id}"
-              th:value="${receipt.invoice_id}"
-              class="hidden"
-            />
-            <input
-              id="cash_change"
-              type="number"
-              step="0.01"
-              th:field="*{cash_change}"
-              class="hidden"
-            />
-            <input
-              id="cash_received"
-              type="number"
-              th:field="*{cash_received}"
-              class="hidden"
-            />
-            <button
-              type="submit"
-              id="equals"
-              class="h-14 w-full bg-green-500 text-white p-2 rounded"
-            >
-              OK
-            </button>
-          </form>
-          <button
-            onclick="clearResult()"
-            class="h-14 operator bg-red-600 text-white p-2 rounded"
-          >
-            C
-          </button>
+    <div class="popup_button">
+      <button onclick="calculateChange()">Calculate Change</button>
+    </div>
+
+    <div class="main_wrapper">
+      <div class="wrapper_container">
+        <div class="number-box">
+          <div class="number_box"></div>
+        </div>
+        <div class="total_change_row">
+          <span>Total: </span>
+          <span>Change: </span>
+        </div>
+        <!-- row 1 -->
+        <div class="first_row">
+          <div class="box 1"><a href="#">1</a></div>
+          <div class="box 2"><a href="#">2</a></div>
+          <div class="box 3"><a href="#">3</a></div>
+          <div class="box_"></div>
+        </div>
+        <div class="second_row">
+          <div class="box 4"><a href="#">4</a></div>
+          <div class="box 5"><a href="#">5</a></div>
+          <div class="box 6"><a href="#">6</a></div>
+          <div class="box_delete"><a href="#">Delete</a></div>
+        </div>
+        <div class="third_row">
+          <div class="box 7"><a href="#">7</a></div>
+          <div class="box 8"><a href="#">8</a></div>
+          <div class="box 9"><a href="#">9</a></div>
+          <div class="box_ok"><a href="#">OK</a></div>
+        </div>
+        <div class="zero_row">
+          <div class="box ."><a href="#">.</a></div>
+          <div class="box 0"><a href="#">0</a></div>
+          <div class="box *"><a href=""></a></div>
+          <div class="box_cancel"><a href="#">Cancel</a></div>
         </div>
       </div>
     </div>
+
     <script>
-      let result = document.getElementById("result");
+      let totalAmount = 0;
+      const numberButtons = document.querySelectorAll(".box");
+      numberButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const number = parseInt(button.textContent);
+          totalAmount += number;
+          document.querySelector(".number_box").textContent =
+            totalAmount.toFixed(2);
+        });
+      });
 
-      function appendNumber(number) {
-        result.value += number;
-        calculateChange();
-      }
+      const deleteButton = document.querySelector(".box_delete");
+      deleteButton.addEventListener("click", () => {
+        totalAmount = 0;
+        document.querySelector(".number_box").textContent =
+          totalAmount.toFixed(2);
+      });
 
-      function clearResult() {
-        result.value = "";
-        calculateChange();
-      }
+      const checkoutButton = document.querySelector(".box_ok");
+      checkoutButton.addEventListener("click", () => {
+        const paymentAmount = parseFloat(
+          prompt("Enter payment amount in USD:")
+        );
+        const exchangeRate = 4100; // 1 USD = 4100 KHR
+        const paymentAmountKHR = paymentAmount * exchangeRate;
+        const changeKHR = paymentAmountKHR - totalAmount;
+        document.querySelector(".total_change_row").innerHTML = `
+        <span>Total: ${totalAmount.toFixed(2)} USD (${paymentAmountKHR.toFixed(
+          2
+        )} KHR)</span>
+        <span>Change: ${changeKHR.toFixed(2)} KHR</span>
+    `;
+      });
 
-      function deleteNumber() {
-        result.value = result.value.slice(0, -1);
-        calculateChange();
-      }
-
-      function calculateChange() {
-        let changeOutput = document.getElementById("change");
-        let input = document.getElementById("result");
-        let total = document.getElementById("total");
-        let cash_change = document.getElementById("cash_change");
-        let cash_received = document.getElementById("cash_received");
-
-        let change = (
-          parseFloat(input.value) - parseFloat(total.innerText)
-        ).toFixed(2);
-        if (isNaN(change) || change <= 0) {
-          changeOutput.innerText = 0;
+      const popupButton = document.querySelector(".popup_button button");
+      popupButton.addEventListener("click", () => {
+        const container = document.querySelector(".wrapper_container");
+        if (container.style.display === "none") {
+          container.style.display = "flex";
         } else {
-          let inputValue = parseFloat(input.value);
-          let changeValue = (inputValue - parseFloat(total.innerText)).toFixed(
-            2
-          );
-
-          cash_received.value = inputValue;
-          cash_change.value = changeValue;
-
-          changeOutput.innerText = changeValue;
+          container.style.display = "none";
         }
-      }
+      });
     </script>
   </body>
 </html>
