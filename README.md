@@ -20,15 +20,18 @@ Sdeung Viraknon 7-9
 
 Sun Vysing 10-13
 
-# command line for Project setup 
+# command line for Project setup
+
 gradle build
 
 # command line for Start run Project
+
 gradle bootRun
 
 # run via spring-boot Dashboard
+
 you can start run on Spring-boot Dashboard
 
 # start open localhost
-localhost:8080
 
+localhost:8080

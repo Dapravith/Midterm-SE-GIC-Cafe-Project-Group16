@@ -1,172 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>table Selection</title>
-  </head>
-  <style>
-    *,
-    *::after,
-    *::before {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --bg-available: #4f9a1a;
+            --bg-unpaid: #cf5e13;
+            --bg-busy: #f40d0d;
+            --bg-main: #f1f1f1;
+            --bg-infor: #deebf7;
+        }
+        
+        body {
+            min-width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        body #container {
+            min-width: 90%;
+            background-color: var(--bg-main);
+            border-radius: 3px;
+            border: 3px solid black;
+            display: flex;
+        }
+        
+        body #container>div {
+            width: 100%;
+        }
+        
+        body #container .table_container {
+            --size-gap: 0.7rem;
+            padding: var(--size-gap);
+            background-color: var(--bg-main);
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--size-gap);
+        }
+        
+        body #container .table_container .box {
+            background-color: var(--bg-available);
+            aspect-ratio: 1/1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            border-radius: 2px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        body #container .table_container .box.busy {
+            background-color: var(--bg-busy);
+        }
+        
+        body #container .table_container .box.unpaid {
+            background-color: var(--bg-unpaid);
+        }
+        
+        body #container .infor_container {
+            background-color: var(--bg-infor);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        body #container .infor_container .sub_infor {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        
+        body #container .infor_container .sub_infor h1 {
+            text-align: center;
+        }
+        
+        body #container .infor_container .sub_infor>div {
+            display: flex;
+            gap: 1rem;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
 
-    :root {
-      --bg-available: #4f9a1a;
-      --bg-unpaid: #cf5e13;
-      --bg-busy: #f40d0d;
-      --bg-main: #f1f1f1;
-      --bg-infor: #deebf7;
-    }
-
-    body {
-      min-width: 100vw;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    body #container {
-      min-width: 90%;
-      background-color: var(--bg-main);
-      border-radius: 3px;
-      border: 3px solid black;
-      display: flex;
-    }
-
-    body #container > div {
-      width: 100%;
-    }
-
-    body #container .table_container {
-      --size-gap: 0.7rem;
-      padding: var(--size-gap);
-      background-color: var(--bg-main);
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: var(--size-gap);
-    }
-
-    body #container .table_container .box {
-      background-color: var(--bg-available);
-      aspect-ratio: 1/1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.2rem;
-      border-radius: 2px;
-      cursor: pointer;
-      color: white;
-    }
-
-    body #container .table_container .box.busy {
-      background-color: var(--bg-busy);
-    }
-
-    body #container .table_container .box.unpaid {
-      background-color: var(--bg-unpaid);
-    }
-
-    body #container .infor_container {
-      background-color: var(--bg-infor);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    body #container .infor_container .sub_infor {
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-
-    body #container .infor_container .sub_infor h1 {
-      text-align: center;
-    }
-
-    body #container .infor_container .sub_infor > div {
-      display: flex;
-      gap: 1rem;
-      font-size: 1.5rem;
-    }
-  </style>
-  <body>
+<body>
     <div id="container">
-      <div class="table_container">
-        <div class="box">1</div>
-        <div class="box unpaid">2</div>
-        <div class="box">3</div>
-        <div class="box">4</div>
-        <div class="box">5</div>
-        <div class="box">6</div>
-        <div class="box">7</div>
-        <div class="box">8</div>
-        <div class="box">9</div>
-        <div class="box">10</div>
-        <div class="box">11</div>
-        <div class="box">12</div>
-        <div class="box">13</div>
-        <div class="box busy">14</div>
-        <div class="box busy">15</div>
-        <div class="box busy">16</div>
-        <div class="box busy">17</div>
-        <div class="box busy">18</div>
-        <div class="box busy">19</div>
-        <div class="box busy">20</div>
-        <div class="box busy">21</div>
-        <div class="box busy">22</div>
-        <div class="box busy">23</div>
-        <div class="box busy">24</div>
-        <div class="box busy">25</div>
-      </div>
-      <div class="infor_container">
-        <div class="sub_infor">
-          <h1>Table Information</h1>
-          <br />
-          <br />
-
-          <div class="number">
-            <div class="label">Table&nbsp;&nbsp;&nbsp;:</div>
-            <div class="datas tb_table" contenteditable="true">02</div>
-          </div>
-          <div class="status">
-            <div class="label">Status&nbsp;&nbsp;:</div>
-            <div class="datas tb_status" contenteditable="true">Available</div>
-          </div>
-          <div class="order">
-            <div class="label">Orders&nbsp;:</div>
-            <div class="datas">
-              <div class="data" contenteditable="true">
-                Ice americano (R x 1)
-              </div>
-              <div class="data" contenteditable="true">Ice mocha (L x 1)</div>
-            </div>
-          </div>
+        <div class="table_container">
+            <div class="box">1</div>
+            <div class="box unpaid">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+            <div class="box">6</div>
+            <div class="box">7</div>
+            <div class="box">8</div>
+            <div class="box">9</div>
+            <div class="box">10</div>
+            <div class="box">11</div>
+            <div class="box">12</div>
+            <div class="box">13</div>
+            <div class="box busy">14</div>
+            <div class="box busy">15</div>
+            <div class="box busy">16</div>
+            <div class="box busy">17</div>
+            <div class="box busy">18</div>
+            <div class="box busy">19</div>
+            <div class="box busy">20</div>
+            <div class="box busy">21</div>
+            <div class="box busy">22</div>
+            <div class="box busy">23</div>
+            <div class="box busy">24</div>
+            <div class="box busy">25</div>
         </div>
-      </div>
+        <div class="infor_container">
+            <div class="sub_infor">
+                <h1>Table Information</h1>
+                <br>
+                <br>
+
+                <div class="number">
+                    <div class="label">Table&nbsp;&nbsp;&nbsp;:</div>
+                    <div class="datas tb_table" contenteditable="true">02</div>
+                </div>
+                <div class="status">
+                    <div class="label">Status&nbsp;&nbsp;:</div>
+                    <div class="datas tb_status" contenteditable="true">Available</div>
+                </div>
+                <div class="order">
+                    <div class="label">Orders&nbsp;:</div>
+                    <div class="datas">
+                        <div class="data" contenteditable="true">
+                            Ice americano (R x 1)
+                        </div>
+                        <div class="data" contenteditable="true">Ice mocha (L x 1)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
-      document
-        .querySelector(".table_container")
-        .addEventListener("click", (e) => {
-          const target = e.target;
-          if (target.classList.contains("box")) {
-            document.querySelector(".tb_table").innerHTML = target.innerText;
-            if (target.classList.contains("busy")) {
-              document.querySelector(".tb_status").innerHTML = "Busy";
-            } else if (target.classList.contains("unpaid")) {
-              document.querySelector(".tb_status").innerHTML = "Unpaid";
-            } else {
-              document.querySelector(".tb_status").innerHTML = "Available";
-            }
-          }
-        });
+        document
+            .querySelector(".table_container")
+            .addEventListener("click", (e) => {
+                const target = e.target;
+                if (target.classList.contains("box")) {
+                    document.querySelector(".tb_table").innerHTML = target.innerText;
+                    if (target.classList.contains("busy")) {
+                        document.querySelector(".tb_status").innerHTML = "Busy";
+                    } else if (target.classList.contains("unpaid")) {
+                        document.querySelector(".tb_status").innerHTML = "Unpaid";
+                    } else {
+                        document.querySelector(".tb_status").innerHTML = "Available";
+                    }
+                }
+            });
     </script>
-  </body>
+</body>
+
 </html>
