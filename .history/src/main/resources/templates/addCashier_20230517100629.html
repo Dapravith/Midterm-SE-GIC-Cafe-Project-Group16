@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com/2.2.16/tailwind.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <div class="row new_cashier">New Cashier</div>
+            <div class="row add_info">
+                <div class="input_info">
+                    <div class="input_row">
+                        <div class="input_field">
+                            <label for="">First name</label>
+                            <label>:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input_field">
+                            <label for="">Last name</label>
+                            <label>:</label>
+                            <input type="text" name="" id="">
+                        </div>
+                        <div class="input_field">
+                            <label for="">Sex</label>
+                            <label>:</label>
+                            <select name="" id="">
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+                        </div>
+                        <div class="input_field">
+                            <label for="">Date of Birth</label>
+                            <label>:</label>
+                            <input type="date">
+                        </div>
+                        <div class="input_field">
+                            <label for="">Login</label>
+                            <label>:</label>
+                            <input type="text">
+                        </div>
+                        <div class="input_field">
+                            <label for="">Password</label>
+                            <label>:</label>
+                            <input type="password">
+                        </div>
+                    </div>
+                    <div class="input_field">
+                        <label for="">Upload Image</label>
+                        <label>:</label>
+                        <div class="relative">
+                            <input type="file" class="hidden">
+                            <div class="flex items-center justify-center w-40 h-40 bg-gray-200 border-2 border-gray-400 rounded-lg cursor-pointer dropzone">
+                                <span class="text-gray-500">Drop image here</span>
+                            </div>
+                            <div class="absolute top-0 right-0 m-2">
+                                <button class="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn2">
+                        <button class="px-4 py-2 text-white bg-green-500 rounded btn_ok hover:bg-green-600">OK</button>
+                        <button class="px-4 py-2 text-white bg-red-500 rounded btn_cancel hover:bg-red-600">Cancel</button>
+                    </div>
+                </div>
+        </form>
+        </div>
+</body>
+
+</html>

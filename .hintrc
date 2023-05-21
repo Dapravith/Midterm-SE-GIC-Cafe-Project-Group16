@@ -9,6 +9,15 @@
     "axe/forms": "off",
     "button-type": "off",
     "axe/name-role-value": "off",
-    "no-inline-styles": "off"
+    "no-inline-styles": "off",
+    "axe/parsing": "off",
+    "axe/text-alternatives": [
+      "default",
+      {
+        "image-alt": "off"
+      }
+    ],
+    "compat-api/css": "off",
+    "axe/keyboard": "off"
   }
 }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- orderhistory -->
+    <form class="hidden bg-white border-black border-2 absolute top-1/4 left-2/4 -translate-x-2/4 -translate-y-2/4 p-6 h-[300px] mt-10" id="popup-page" method="POST">
+        <div>
+            <h1 class="text-2xl">Histories</h1>
+            <div class="orderhistory">
+                <div class="grid grid-cols-5 p-3 m-3 bg-purple-200">
+                    <p></p>
+                    <p>Order number</p>
+                    <p>Table</p>
+                    <p>Price($)</p>
+                    <p class="pl-5">Date</p>
+                </div>
+                <div class="block list-name ">
+                    <div class="grid grid-cols-5 pl-5">
+                        <p>1</p>
+                        <p>N00001</p>
+                        <p>01</p>
+                        <p>2.3$</p>
+                        <p>02/05/2023 08:30</p>
+                    </div>
+                    <div class="grid grid-cols-5 pl-5">
+                        <p>2</p>
+                        <p>N00002</p>
+                        <p>02</p>
+                        <p>2.1$</p>
+                        <p>02/05/2023 08:30</p>
+                    </div>
+                </div>
+            </div>
+    </form>
+
+    <script>
+        function openMenu(elmnt, pagename) {
+            var i, tabcontent, tab;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            } //hide content
+            tab = document.getElementsByClassName("tab");
+            for (i = 0; i < tab.length; i++) {
+                tab[i].className = tab[i].className.replace("active");
+            }
+            document.getElementById(pagename).style.display = "block";
+            elmnt.currentTarget.className += "active";
+        }
+        document.getElementById("defaultOpen").click();
+        //pop up page
+        let popupPage = document.getElementById("popup-page"); //form
+        let historyBtn = document.getElementById("Orderhistory");
+
+        historyBtn.addEventListener("click", () => {
+            if (popupPage.style.display === "inline-block") {
+                popupPage.style.display = "none";
+            } else {
+                popupPage.style.display = "inline-block";
+            }
+        })
+    </script>
+</body>
+
+</html>

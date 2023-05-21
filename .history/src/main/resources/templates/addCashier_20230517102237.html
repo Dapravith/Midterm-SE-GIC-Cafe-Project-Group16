@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Cashier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      button:hover {
+        box-shadow: 0 14px 15px 0 rgba(36, 149, 198, 0.921),
+          0 17px 60px 0 rgba(90, 81, 81, 0.19);
+      }
+
+      .text-center {
+        color: rgb(54, 54, 58);
+        justify-content: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body class="m-10 text-lg">
+    <!-- CRUD CASHIERS -->
+    <div
+      class="new_cashier w-[60%] h-fit m-auto border-[2px] border-solid border-[#4B371C]"
+    >
+      <div class="p-3 head">
+        <h2 class="text-center">New Cashier</h2>
+      </div>
+      <div class="w-[100%] border-[1px] border-solid border-[#4B371C]"></div>
+      <div class="flex">
+        <div class="add_cashier w-[60%]">
+          <div class="py-3">
+            <form action="#" class="p-5">
+              <div class="grid grid-cols-2 mt-3">
+                <label class="mr-5" for="firstName">First Name :</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name=""
+                  class="p-1 border-[1px] border-solid border-[#4B371C] rounded"
+                  placeholder=""
+                />
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <label class="mr-5" for="lastName">Last Name :</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name=""
+                  class="p-1 border-[1px] border-solid border-[#4B371C] rounded"
+                  placeholder=""
+                />
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <label class="mr-5" for="sex">Sex :</label>
+                <div class="flex justify-between">
+                  <select
+                    type="add-item"
+                    id="sex"
+                    name=""
+                    class="p-1 border-[1px] border-solid border-[#4B371C] rounded"
+                    placeholder=""
+                  >
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <label class="mr-5" for="dob">Date of Birth :</label>
+                <input
+                  type="date"
+                  id="dob"
+                  name=""
+                  class="p-1 border-[1px] border-solid border-[#4B371C] rounded"
+                  placeholder=""
+                />
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <label class="mr-5" for="login">Login :</label>
+                <input
+                  type="text"
+                  id="login"
+                  name=""
+                  class="p-1 border-[1px] border-solid border-[#4B371C] rounded"
+                  placeholder=""
+                />
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <label class="mr-5" for="password">Password :</label>
+                <input
+                  type="password"
+                  id="password"
+                  name=""
+                  class="p-1 border-[1px] border-solid border-[#4B371C] rounded"
+                  placeholder=""
+                />
+              </div>
+              <div class="mt-5">
+                <button
+                  class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+                >
+                  Add Cashier
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

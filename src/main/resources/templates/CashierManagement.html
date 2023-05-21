@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="'./asset/style.css">
 </head>
+
 <body>
     <div class="m-auto mt-5 border border-black w-3/4 h-[600px]">
         <ul class="grid grid-cols-6">
@@ -93,30 +95,30 @@
                     <p>Price($)</p>
                     <p class="pl-5">Date</p>
                 </div>
-            <div class="list-name block ">
-                <div class="grid grid-cols-5 pl-5">
-                    <p>1</p>
-                    <p>N00001</p>
-                    <p>01</p>
-                    <p>2.3$</p>
-                    <p>02/05/2023 08:30</p>
-                </div>
-                <div class="grid grid-cols-5 pl-5">
-                    <p>2</p>
-                    <p>N00002</p>
-                    <p>02</p>
-                    <p>2.1$</p>
-                    <p>02/05/2023 08:30</p>
+                <div class="list-name block ">
+                    <div class="grid grid-cols-5 pl-5">
+                        <p>1</p>
+                        <p>N00001</p>
+                        <p>01</p>
+                        <p>2.3$</p>
+                        <p>02/05/2023 08:30</p>
+                    </div>
+                    <div class="grid grid-cols-5 pl-5">
+                        <p>2</p>
+                        <p>N00002</p>
+                        <p>02</p>
+                        <p>2.1$</p>
+                        <p>02/05/2023 08:30</p>
+                    </div>
                 </div>
             </div>
-        </div>
     </form>
     <script>
         //pop up page
         let popupPage = document.getElementById("popup-page"); //form
-        let historyBtn = document.getElementById("Orderhistory");
+        let historyBtn = document.getElementById("Order-history");
 
-                historyBtn.addEventListener("click", () => {
+        historyBtn.addEventListener("click", () => {
             if (popupPage.style.display === "inline-block") {
                 popupPage.style.display = "none";
             } else {
@@ -125,4 +127,5 @@
         })
     </script>
 </body>
+
 </html>

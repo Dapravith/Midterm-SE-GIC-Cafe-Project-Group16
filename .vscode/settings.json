@@ -4,4 +4,5 @@
   "cSpell.words": [
     "springframework"
   ],
+  "DockerRun.DisableAutoGenerateConfig": true,
 }

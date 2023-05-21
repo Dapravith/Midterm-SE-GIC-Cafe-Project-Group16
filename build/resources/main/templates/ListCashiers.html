@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="col-12">
+        <h3 class="text-center">List of Cashiers</h3>
+        <hr />
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Login</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cashier : ${cashiers}">
+                    <td>[[*{cashier.name}]]</td>
+                    <td>[[*{cashier.login}]]</td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="mt-2 btn btn-success btn-sm" data-toggle="modal" th:attr="data-target='#exampleModalCenter'+*{cashier.id}">
+                Edit
+              </button>
+                        <!-- Modal -->
+                        <div class="modal fade" th:id="*{'exampleModalCenter'+{cashier.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                                            Edit Cashier
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/editCashier" method="post">
+                                            <div class="form-group">
+                                                <label>Cashier ID</label>
+                                                <input type="hidden" th:value="*{cashier.id}" class="form-control" name="id" />
+                                                <label>New Cashier Name</label>
+                                                <input type="text" name="newName" class="form-control" value="[[*{cashier.name}]]" /><br />
+                                                <label>New Cashier Login</label>
+                                                <input type="text" name="newLogin" class="form-control" value="[[*{cashier.login}]]" /><br />
+                                                <button type="submit" class="btn btn-primary">
+                            Submit
+                          </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                      </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+    </div>
+</body>
+
+</html>

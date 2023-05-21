@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Screen Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.tailwindcss.com/2.2.16" rel="stylesheet">
+
+    <style>
+        .tab:hover {
+            background-color: white;
+        }
+        
+        .list:hover {
+            background-color: rgb(146, 98, 26);
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="m-auto mt-5  border border-black w-3/4 h-[700px] md:w-3/4 xl:w-fit">
+        <ul class="grid w-3/4 grid-cols-6">
+            <li class="p-1 text-center border-r-2 border-black list"><a th:href="@{/addCashier}" href="#new_cashier"> New Cashier</a></li>
+            <li class="p-1 text-center border-r-2 border-black list"><a th:href="@{/addDrink}" href="#New Drink"> New Drinks</a></li>
+            <li class="p-1 text-center border-r-2 border-black list"><a th:href="@{/addFood}" href="#New Food"> New Food</a></li>
+            <li class="p-1 text-center border-r-2 border-black list"><a th:href="@{/addCategories}" href="#new_category"> New category</a></li>
+            <li class="p-1 text-center border-r-2 border-black list"><a href="#Order History" id="Order-history"> Order history</a></li>
+            <li class="p-1 text-center list"> <a th:href="@{/TableManagement}" href="#Manage_table">Manage Table</a></li>
+        </ul>
+        <div class="container border-t border-black">
+            <div class="bg-gray-100 border-b border-black ">
+                <ul class="flex gap-2 pt-1 pl-10 bg-gray-300 ">
+                    <li class="p-1 border-2 rounded-t-lg tab border-t-sky-400 border-x-sky-400" onclick="openpage(this,'Cashier')" id="defaultOpen"><a href="#Cashier">Cashiers</a></li>
+                    <li class="p-1 border-2 rounded-t-lg tab border-t-sky-400 border-x-sky-400" onclick="openpage(this,'Drink')"><a href="#Drink"> Drinks</a></li>
+                    <li class="p-1 border-2 rounded-t-lg tab border-t-sky-400 border-x-sky-400" onclick="openpage(this,'Food')"><a href="#Food"> Foods</a></li>
+                </ul>
+            </div>
+            <!-- cashier -->
+            <div class="tabcontent" id="Cashier">
+                <div class="grid grid-cols-2">
+                    <div class="border-r border-black left">
+                        <div class="grid grid-cols-4 p-3 m-3 bg-blue-300">
+                            <p></p>
+                            <p>Cashier Name</p>
+                            <p>Login</p>
+                            <p class="pl-5">Action</p>
+                        </div>
+                        <div class="grid grid-cols-4 pl-5">
+                            <p>1</p>
+                            <p>Dara</p>
+                            <p>Dara233</p>
+                            <p class="flex gap-5 pr-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer edit-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                    </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer delete-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                    </svg>
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-4 pl-5">
+                            <p>2</p>
+                            <p>Virak</p>
+                            <p>virak282</p>
+                            <p class="flex gap-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer edit-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                    </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer delete-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                    </svg>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="right bg-sky-100 pl-5 h-[623px]  md:h-[600px] lg:h-[623px] ">
+                        <h1 class="text-2xl font-semibold text-center">Cashier Information</h1>
+                        <div class="flex items-center m-5 gap-[90px]">
+                            <img src="https://img.freepik.com/premium-vector/person-avatar-icon-design-vector-multiple-use-vector-illustration_625349-284.jpg?w=1380" alt="cashier" width="50%">
+                            <div class="text-lg">
+                                <p>Name: Dara </p>
+                                <p>Age:21</p>
+                                <p>Sex: Male</p>
+                                <p>Hired Day:25-05-2021 </p>
+                                <p>Served:12-06-2021</p>
+                                <p>Login: xyz_a$sdj</p>
+                                <p>Password: **********</p>
+                                <p>last login:23-09-2021</p>
+                            </div>
+                        </div>
+                        <div class="p-4 text-lg">
+                            <p>Last Login:25-5-2126 8:00</p>
+                            <p>Last served:99</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- drink -->
+            <div class="tabcontent" id="Drink">
+                <div class="grid grid-cols-2 ">
+                    <div class="border-r border-black left">
+                        <div class="grid grid-cols-5 p-3 m-3 bg-blue-300">
+                            <p></p>
+                            <p>Drink Code</p>
+                            <p>Drink Name</p>
+                            <p>Prices($)</p>
+                            <p class="pl-5">Action</p>
+                        </div>
+                        <div class="grid grid-cols-5 pl-5">
+                            <p>1</p>
+                            <p>DH001</p>
+                            <p>Espresso</p>
+                            <p>2.1</p>
+                            <p class="flex gap-5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                        <path stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                                                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                        <path stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                                </svg>
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-5 pl-5">
+                            <p>2</p>
+                            <p>DI002</p>
+                            <p>Iced Americano</p>
+                            <p>2.3</p>
+                            <p class="flex gap-5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                                                        </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                        </svg>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="right bg-sky-100 pl-5 h-[622px] p-2 ">
+                        <h1 class="text-2xl font-semibold text-center">Drink Information</h1>
+                        <div class="flex items-center m-5 gap-[20px] pt-5">
+                            <img src="https://www.starbucksathome.com/sites/default/files/styles/nutrition_instruction_image/public/2022-05/SBUX_NDG_Iced-Americano-Cup_Website_LongShadow_220225_1_1646048258200.png?itok=6gCbfDgi" alt="drink" width="40%">
+                            <div class="text-lg">
+                                <p>Code: DH001 </p>
+                                <P>Name: Esproesso</P>
+                                <p>Category:</p>
+                                <p>Price: </p>
+                                <p>Order:</p>
+                                <p>Note: Good for person who likes High coffee compression and for up the whole night.</p>
+                            </div>
+                        </div>
+                        <p class="p-8 text-lg">Last order:25-07-2015</p>
+                    </div>
+                </div>
+            </div>
+            <!-- food  -->
+            <div class="tabcontent " id="Food">
+                <div class="grid grid-cols-2 ">
+                    <div class="border-r border-black left">
+                        <div class="grid grid-cols-5 p-3 m-3 bg-blue-300">
+                            <p></p>
+                            <p>Food Code</p>
+                            <p>Food Name</p>
+                            <p>Prices($)</p>
+                            <p class="pl-5">Action</p>
+                        </div>
+                        <div class="grid grid-cols-5 pl-5">
+                            <p>1</p>
+                            <p>DF001</p>
+                            <p>French Fries</p>
+                            <p>1.5</p>
+                            <p class="flex gap-5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                                                        </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                        </svg>
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-5 pl-5">
+                            <p>2</p>
+                            <p>DF002</p>
+                            <p>Sandwich</p>
+                            <p>1.8</p>
+                            <p class="flex gap-5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+                                                        </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                        </svg>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="right bg-sky-100 pl-5 h-[623px]">
+                        <h1 class="text-2xl font-semibold text-center">Food Information</h1>
+                        <div class="object-center p-3 m-5">
+                            <img src="https://img.apmcdn.org/4b2716626c9ff3f6e5dfebe520eb592c33cf1e7b/uncropped/941f50-splendid-table-french-fries.jpg" alt="food" width="85%" class="">
+                            <div class="grid grid-cols-2 pt-5 text-lg">
+                                <p>Code: DF001 </p>
+                                <P>Name: French Fries</P>
+                                <p>Category: food</p>
+                                <p>Price: 1.5$</p>
+                                <p>Order: 99 times</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order-History -->
+    <form class="hidden bg-white border-black border-2 absolute top-1/4 left-2/4 -translate-x-2/4 -translate-y-2/4 p-6 h-[300px] mt-10" id="popup-page" method="POST">
+        <div>
+            <h1 class="text-2xl">Histories</h1>
+            <div class="orderhistory">
+                <div class="grid grid-cols-5 p-3 m-3 bg-purple-200">
+                    <p></p>
+                    <p>Order number</p>
+                    <p>Table</p>
+                    <p>Price($)</p>
+                    <p class="pl-5">Date</p>
+                </div>
+                <div class="block list-name ">
+                    <div class="grid grid-cols-5 pl-5">
+                        <p>1</p>
+                        <p>N00001</p>
+                        <p>01</p>
+                        <p>2.3$</p>
+                        <p>02/05/2023 08:30</p>
+                    </div>
+                    <div class="grid grid-cols-5 pl-5">
+                        <p>2</p>
+                        <p>N00002</p>
+                        <p>02</p>
+                        <p>2.1$</p>
+                        <p>02/05/2023 08:30</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-0 right-0 close-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 text-red-500 cursor-pointer" onclick="closeOrderHistory()">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
+
+    </form>
+    <script>
+        function openpage(elmnt, pageName) {
+            var i, tabcontent, tab, right;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+
+            }
+            tab = document.getElementsByClassName("tab");
+            for (i = 0; i < tab.length; i++) {
+                tab[i].className = tab[i].className.replace("active");
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.currentTarget.className += "active";
+        }
+        document.getElementById("defaultOpen").click();
+
+        // Get the edit icons
+        const editIcons = document.querySelectorAll('.edit-icon');
+
+        // Add click event listener to each edit icon
+        editIcons.forEach(icon => {
+            icon.addEventListener('click', handleEdit);
+        });
+
+        // Get the delete icons
+        const deleteIcons = document.querySelectorAll('.delete-icon');
+
+        // Add click event listener to each delete icon
+        deleteIcons.forEach(icon => {
+            icon.addEventListener('click', handleDelete);
+        });
+
+        // Edit icon click event handler
+        function handleEdit(event) {
+            // Retrieve the corresponding row or data associated with the edit icon
+            const row = event.target.closest('div.grid-cols-4');
+
+            // Modify the row or perform any desired action for edit
+            console.log('Edit:', row);
+        }
+
+        // Delete icon click event handler
+        function handleDelete(event) {
+            // Retrieve the corresponding row or data associated with the delete icon
+            const row = event.target.closest('div.grid-cols-4');
+
+            // Modify the row or perform any desired action for delete
+            console.log('Delete:', row);
+        }
+
+        //pop up page
+        let popupPage = document.getElementById("popup-page"); //form
+        let historyBtn = document.getElementById("Order-history");
+
+        historyBtn.addEventListener("click", () => {
+            if (popupPage.style.display === "inline-block") {
+                popupPage.style.display = "none";
+            } else {
+                popupPage.style.display = "inline-block";
+            }
+        });
+
+        function closeOrderHistory() {
+            // Code to close the order history popup or navigate back to the home screen
+            window.location.href = "/AdminHomescreen";
+        }
+    </script>
+</body>
+
+</html>

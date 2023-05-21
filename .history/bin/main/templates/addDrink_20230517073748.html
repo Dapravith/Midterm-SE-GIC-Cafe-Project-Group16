@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD PRODUCTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            box-shadow: 0 12px 16px 0 rgba(228, 209, 209, 0.24), 0 17px 50px 0 rgba(90, 81, 81, 0.19);
+        }
+
+        .child2 {
+            height: 300px;
+            display: flex;
+            gap: 60px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .child2 .image-container {
+            border: 1px solid slategray;
+            border-radius: 10px;
+            height: 200px;
+            width: 300px;
+            overflow: hidden;
+        }
+
+        .child2 .image-container img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .child2 .image-container span {
+            font-size: 32px;
+            width: 100%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: slategray;
+        }
+
+        .child2 .file input {
+            display: none;
+        }
+
+        .child2 .file label {
+            padding: 7px 40px;
+            background: rgb(0, 0, 0);
+            border-radius: 20px;
+            color: #fff;
+            font-weight: 800px;
+            cursor: pointer;
+        }
+
+        input:nth-child(2) {
+            flex: 1;
+            background-color: #909090;
+        }
+    </style>
+</head>
+
+<body class="m-10 text-lg">
+    <!-- CRUD PRODUCTS -->
+    <div class="new_drink w-[60%] h-fit m-auto  border-[2px] border-solid border-[#4B371C] ">
+        <div class="p-3 head">
+            <h2>New Drinks</h2>
+        </div>
+        <div class="w-[100%] border-[1px] border-solid border-[#4B371C]"></div>
+        <div class="flex">
+            <div class="add_drink w-[60%]">
+                <div class="py-3 ">
+                    <form action="#" class="p-3 ">
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="dcode">Drinks code :</label>
+                            <input type="text" id="dcode" name="" class="p-1 border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                        </div>
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="dname">Drinks name :</label>
+                            <input type="text" id="dname" name="" class="p-1 border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                        </div>
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="category">Category :</label>
+                            <div class="flex justify-between">
+                                <select type="add-item" id="category" name="" class="p-1 border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                                    <option value="1">Hot Drinks</option >
+                                    <option value="2" >Cool Drinks</option >
+                                    <option value="3" >Frappe</option >
+                                </select>
+                                <button id="add_category" class=" w-fit h-fit bg-[#3CB043] text-center text-white font-bold cursor-pointer duration-100 rounded-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[30px] h-[30px] " onclick="showPopup()">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="price">Price :</label>
+                            <input name="" min="0" type="number" id="price" class="p-1 border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                        </div>
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="note">Note :</label>
+                            <textarea id="note" cols="50" rows="5" name="" class="p-1 w-full border-[1px] border-solid border-[#4B371C] rounded resize-x"> </textarea>
+                        </div>
+                    </form>
+                </div>
+                <br />
+                <div>
+                    <button class=" py-3 bg-[#3CB043] text-center text-white font-bold px-20 m-3 inline-block cursor-pointer duration-100 rounded-lg">OK</button>
+                    <button class=" py-3 px-5 bg-[#FDA172] text-center text-white  font-bold p-3 m-3 inline-block cursor-pointer duration-100 rounded-lg">Cancel</button>
+                </div>
+            </div>
+            <!-- image -->
+            <div class="child2">
+                <div class="image-container">
+                    <img src="" alt="" id="output">
+                    <span>Image</span>
+                </div>
+                <div class="file">
+                    <label for="file">Upload</label>
+                    <input name="file" id="file" type="file" onchange="loadFile(event)">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- ADD NEW CATEGORY -->
+    <div class="popup w-[100vw] h-[100vh] absolute top-[0] left-[0] bg-[#f1f1f199] hidden z-[100]">
+        <main class="w-[20rem] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <div class="none w-full h-fit m-auto  border-[2px] border-solid border-[#4B371C]">
+                <div class="p-3 head">
+                    <h2>New Category</h2>
+                </div>
+                <div class="w-[100%] border-[1px] border-solid border-[#4B371C]"></div>
+                <div class="">
+                    <form action="#" class="p-3 add_category">
+                        <div class="grid grid-cols-2 mt-3">
+                            <label for="gcode">Category code :</label>
+                            <input type="text" id="dcode" name="" class="category_code border-[1px] border-solid border-[#4B371C] rounded" placeholder="" required>
+                        </div>
+                        <div class="grid grid-cols-2 mt-3">
+                            <label for="gname">Category name :</label>
+                            <input type="text" id="gname" name="" class="category_name border-[1px] border-solid border-[#4B371C] rounded" placeholder="" required>
+                        </div>
+                        <br />
+                        <div class="flex">
+                            <input id="okay" type="submit" value="OK" class=" py-3 bg-[#3CB043] text-center font-bold text-white px-16 in m-3 p-3 line-block cursor-pointer duration-100 rounded-lg">
+                            <button class="cancel py-3 px-5 bg-[#FDA172] text-center font-bold text-white p-3 m-3 inline-block cursor-pointer duration-100 rounded-lg">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+    </div>
+    <script>
+        const addNewCat = document.getElementById("add_category");
+        const popup = document.querySelector(".popup");
+        const form_add_category = document.querySelector(".add_category ");
+
+        addNewCat.addEventListener("click", showPopup);
+
+        function showPopup() {
+            popup.classList.remove('hidden')
+        }
+
+        form_add_category.addEventListener("submit", () => {
+            // alert("OMG")
+            clear()
+            popup.classList.add('hidden')
+        });
+
+        document.querySelector('.cancel').addEventListener('click', () => {
+            clear()
+            popup.classList.add('hidden')
+        })
+
+        popup.addEventListener('click', (e) => {
+            const target = e.target;
+
+            if (target.classList.contains('popup')) {
+                popup.classList.add('hidden')
+            }
+        })
+
+        const clear = () => {
+            document.querySelector('.category_name').value = ""
+            document.querySelector('.category_code').value = ""
+        }
+    </script>
+</body>
+
+</html>

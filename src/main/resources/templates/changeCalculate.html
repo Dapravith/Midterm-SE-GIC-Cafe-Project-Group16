@@ -12,24 +12,18 @@
             margin: 0;
             padding: 0;
         }
-
+        
         body {
             font-family: "Maven Pro", sans-serif;
         }
-
-        .popup_button button {
-            margin-top: 2rem;
-            margin-left: 1rem;
-            padding: 1rem;
-        }
-
+        
         .main_wrapper {
             display: flex;
-            height: 100vh;
             justify-content: center;
             align-items: center;
+            height: 100vh;
         }
-
+        
         .wrapper_container {
             width: 25rem;
             height: 33rem;
@@ -41,31 +35,31 @@
             background-color: #eefbfb;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
         }
-
+        
         .first_row {
             display: flex;
             gap: 1rem;
         }
-
+        
         .second_row {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
-
+        
         .third_row {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
-
+        
         .zero_row {
             display: flex;
             justify-content: center;
             margin-top: 1rem;
             gap: 1rem;
         }
-
+        
         .box {
             background-color: #000080;
             width: 4rem;
@@ -76,7 +70,7 @@
             align-items: center;
             border-radius: 10px;
         }
-
+        
         .box_cancel {
             background-color: rgb(30, 144, 255);
             width: 7rem;
@@ -87,12 +81,12 @@
             align-items: center;
             border-radius: 10px;
         }
-
-        .box_cencel:hover {
+        
+        .box_cancel:hover {
             background-color: orange;
             color: white;
         }
-
+        
         .box_ok {
             background-color: rgb(30, 144, 255);
             width: 7rem;
@@ -103,12 +97,12 @@
             align-items: center;
             border-radius: 10px;
         }
-
+        
         .box_ok:hover {
             background-color: orange;
             color: white;
         }
-
+        
         .box_ {
             background-color: rgb(30, 144, 255);
             width: 7rem;
@@ -119,7 +113,7 @@
             align-items: center;
             border-radius: 10px;
         }
-
+        
         .box_delete {
             background-color: rgb(30, 144, 255);
             width: 7rem;
@@ -130,22 +124,22 @@
             align-items: center;
             border-radius: 10px;
         }
-
+        
         .box_delete:hover {
             background-color: orange;
             color: white;
         }
-
+        
         .box:hover {
             background-color: orange;
             color: white;
         }
-
+        
         a {
             text-decoration: none;
             color: white;
         }
-
+        
         .number_box {
             margin-bottom: 0.5rem;
             width: 22rem;
@@ -154,9 +148,10 @@
             color: black;
             display: flex;
             align-items: center;
+            justify-content: center;
             font-size: 3rem;
         }
-
+        
         .total_change_row {
             display: flex;
             flex-direction: column;
@@ -168,10 +163,6 @@
 </head>
 
 <body>
-    <div class="popup_button">
-        <button type="submit" onclick="calculateChange()">Calculate Change</button>
-    </div>
-
     <div class="main_wrapper">
         <div class="wrapper_container">
             <div class="number-box">
@@ -213,49 +204,93 @@
 
     <script>
         let totalAmount = 0;
+        let displayValue = ""; // Track the displayed value in the calculator
+
         const numberButtons = document.querySelectorAll(".box");
+
         numberButtons.forEach((button) => {
             button.addEventListener("click", () => {
-                const number = parseInt(button.textContent);
-                totalAmount += number;
-                document.querySelector(".number_box").textContent =
-                    totalAmount.toFixed(2);
+                const value = button.textContent;
+
+                // Handle decimal point input
+                if (value === ".") {
+                    if (displayValue.includes(".")) return; // Prevent multiple decimal points
+                    displayValue += value;
+                } else {
+                    displayValue += value;
+                }
+
+                totalAmount = eval(displayValue); // Evaluate the expression
+
+                document.querySelector(".number_box").textContent = totalAmount.toFixed(2);
             });
         });
 
         const deleteButton = document.querySelector(".box_delete");
         deleteButton.addEventListener("click", () => {
+            displayValue = "";
             totalAmount = 0;
-            document.querySelector(".number_box").textContent =
-                totalAmount.toFixed(2);
+            document.querySelector(".number_box").textContent = totalAmount.toFixed(2);
         });
 
         const checkoutButton = document.querySelector(".box_ok");
         checkoutButton.addEventListener("click", () => {
-            const paymentAmount = parseFloat(
-                prompt("Enter payment amount in USD:")
-            );
-            const exchangeRate = 4100; // 1 USD = 4100 KHR
-            const paymentAmountKHR = paymentAmount * exchangeRate;
-            const changeKHR = paymentAmountKHR - totalAmount;
-            document.querySelector(".total_change_row").innerHTML = `
-        <span>Total: ${totalAmount.toFixed(2)} USD (${paymentAmountKHR.toFixed(
-          2
-        )} KHR)</span>
-        <span>Change: ${changeKHR.toFixed(2)} KHR</span>
-    `;
-        });
+            const paymentAmount = parseFloat(prompt("Enter payment amount in USD:"));
 
-        const popupButton = document.querySelector(".popup_button button");
-        popupButton.addEventListener("click", () => {
-            const container = document.querySelector(".wrapper_container");
-            if (container.style.display === "none") {
-                container.style.display = "flex";
-            } else {
-                container.style.display = "none";
+            if (isNaN(paymentAmount)) {
+                alert("Invalid payment amount. Please enter a valid number.");
+                return;
             }
+
+            const change = paymentAmount - totalAmount;
+
+            if (change < 0) {
+                alert("Insufficient payment. Please enter a higher amount.");
+                return;
+            }
+
+            const alertMessage = `
+    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="p-4 bg-white rounded shadow-lg">
+            <div class="mb-4 text-lg font-bold">Payment Successful!</div>
+            <div class="mb-4">Total (Integer): ${Math.floor(totalAmount)} USD</div>
+            <div class="mb-4">Total (Decimal): ${totalAmount.toFixed(2)} USD</div>
+            <div class="mb-4">Change: ${change.toFixed(2)} USD</div>
+            <div class="flex justify-end">
+                <button class="px-4 py-2 mr-2 text-white bg-red-500 rounded" id="closeButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                        <path d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <button class="px-4 py-2 text-white bg-green-500 rounded" id="okButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                        <path d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+  `;
+
+            const alertContainer = document.createElement("div");
+            alertContainer.innerHTML = alertMessage;
+            document.body.appendChild(alertContainer);
+
+            const closeButton = document.getElementById("closeButton");
+            closeButton.addEventListener("click", () => {
+                document.body.removeChild(alertContainer);
+            });
+
+            const okButton = document.getElementById("okButton");
+            okButton.addEventListener("click", () => {
+                displayValue = "";
+                totalAmount = 0;
+                document.querySelector(".number_box").textContent = totalAmount.toFixed(2);
+                document.body.removeChild(alertContainer);
+            });
         });
     </script>
+
 </body>
 
 </html>

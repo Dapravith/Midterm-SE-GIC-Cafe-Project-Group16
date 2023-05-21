@@ -7,233 +7,283 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drink Selection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    .wrapper {
-        width: 92%;
-        margin: auto;
-        display: flex;
-        justify-items: center;
-        text-align: center;
-        height: 500px;
-        border: 3px solid black;
-        margin: auto;
-    }
-    
-    .container_drinks {
-        width: 50%;
-    }
-    
-    .drink_scroll {
-        display: flex;
-        justify-content: center;
-        margin: auto;
-        padding: 10px;
-        width: 90%;
-    }
-    
-    .drinks {
-        text-align: center;
-        background-color: rgb(25, 25, 112);
-        color: #fff;
-        min-width: 100px;
-        height: 55px;
-        margin: auto 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: black;
-    }
-    
-    .left_scroll {
-        background-color: rgb(25, 25, 112);
-        width: 80px;
-        height: 65px;
-        justify-content: start;
-    }
-    
-    .left_scroll i {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-    }
-    
-    .right_scroll {
-        background-color: rgb(25, 25, 112);
-        width: 80px;
-        height: 65px;
-        justify-content: end;
-    }
-    
-    .right_scroll i {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-    }
-    
-    .drink_types {
-        background-color: rgb(65, 105, 225);
-        display: flex;
-        border: 2px solid rgb(25, 25, 112);
-        width: 600px;
-        height: 60px;
-        margin: auto;
-        overflow: auto;
-        scroll-behavior: smooth;
-        cursor: pointer;
-    }
-    
-    .drink_types::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .line1 {
-        border-top: 3px solid gray;
-        width: 90%;
-        margin: auto;
-    }
-    
-    .drink_menu {
-        height: 600px;
-        padding: 10px;
-        margin: 12px;
-    }
-    
-    .cafe {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 5px;
-    }
-    
-    img {
-        width: 130px;
-        height: 115px;
-    }
-    
-    .cafe-row {
-        width: 100%;
-        position: relative;
-        cursor: pointer;
-        margin: 20px;
-        padding: 2px;
-        background-color: rgb(240, 248, 255);
-    }
-    
-    .cafe-name {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: rgba(255, 255, 255, 0.578);
-        height: min-content;
-        z-index: 2;
-        font-size: 20px;
-        text-align: center;
-        padding: 0.3rem 0.6rem;
-        font-size: 14px;
-    }
-    
-    .order_info {
-        width: 50%;
-        background-color: rgb(224, 255, 255);
-    }
-    
-    .order_info>h2 {
-        text-align: center;
-        font-size: 40px;
-        padding: 20px;
-        color: #f9dccc;
-    }
-    
-    .display_info {
-        display: grid;
-        grid-template-columns: 1fr 0.7fr 0.4fr;
-        font-size: 18px;
-        height: 40px;
-        align-items: center;
-        align-content: center;
-        padding-left: 35px;
-    }
-    
-    .display_info:hover {
-        background-color: rgb(255, 228, 181);
-        cursor: pointer;
-    }
-    
-    .id_title {
-        display: flex;
-    }
-    
-    .id_title>.p_title {
-        margin-left: 35px;
-    }
-    
-    #number {
-        border: 0;
-        background-color: transparent;
-        width: 30px;
-        font-size: 18px;
-        outline: 0;
-    }
-    
-    .size_quantity_price {
-        display: grid;
-        grid-template-columns: auto auto auto;
-    }
-    
-    .edit_delete>svg {
-        margin-right: 30px;
-    }
-    
-    .line2 {
-        border-top: 1px solid #f8dccc;
-        width: 90%;
-        margin: auto;
-        margin-bottom: 10px;
-    }
-    
-    @media only screen and (max-width: 768px) {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .wrapper {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-items: center;
+            text-align: center;
+            height: 700px;
+            position: relative;
+            border: 3px solid rgb(47, 46, 46);
+            margin: auto;
+        }
+        
+        .container_drinks {
+            width: 50%;
+        }
+        
+        .drink_scroll {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            padding: 10px;
+            width: 90%;
+        }
+        
+        .drinks {
+            text-align: center;
+            background-color: rgb(31, 31, 140);
+            color: #fff;
+            min-width: 100px;
+            height: 55px;
+            margin: auto 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: black;
+        }
+        
+        .left_scroll {
+            background-color: rgb(25, 25, 112);
+            width: 80px;
+            height: 65px;
+            justify-content: start;
+        }
+        
+        .left_scroll i {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+        
+        .right_scroll {
+            background-color: rgb(25, 25, 112);
+            width: 80px;
+            height: 65px;
+            justify-content: end;
+        }
+        
+        .right_scroll i {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+        
+        .drink_types {
+            background-color: rgb(65, 105, 225);
+            display: flex;
+            border: 2px solid rgb(25, 25, 112);
+            width: 600px;
+            height: 60px;
+            margin: auto;
+            overflow: auto;
+            scroll-behavior: smooth;
+            cursor: pointer;
+        }
+        
+        .drink_types::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .line1 {
+            border-top: 3px solid gray;
+            width: 90%;
+            margin: auto;
+        }
+        
+        .drink_menu {
+            height: 600px;
+            padding: 10px;
+            margin: 12px;
+        }
+        
         .cafe {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 6px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 5px;
         }
+        
+        img {
+            width: 110px;
+            height: 95px;
+        }
+        
+        .cafe-row {
+            width: 100%;
+            position: relative;
+            cursor: pointer;
+            margin: 20px;
+            padding: 2px;
+            background-color: rgb(240, 248, 255);
+        }
+        
+        .cafe-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.578);
+            height: min-content;
+            z-index: 2;
+            font-size: 20px;
+            text-align: center;
+            padding: 0.3rem 0.6rem;
+            font-size: 14px;
+        }
+        
+        .order_info {
+            width: 60%;
+            background-color: rgb(224, 255, 255);
+            align-items: flex-end;
+        }
+        
         .order_info>h2 {
             text-align: center;
-            font-size: 30px;
-            padding: 7px;
+            font-size: 40px;
+            padding: 20px;
+            color: #31302f;
         }
+        
         .display_info {
             display: grid;
-            grid-template-columns: auto;
-            font-size: 12px;
+            grid-template-columns: 1fr 0.7fr 0.4fr;
+            font-size: 18px;
             height: 40px;
             align-items: center;
             align-content: center;
             padding-left: 35px;
         }
+        
         .display_info:hover {
-            background-color: #ffece1;
+            background-color: rgb(255, 228, 181);
+            cursor: pointer;
         }
+        
+        .id_title {
+            display: flex;
+        }
+        
+        .id_title>.p_title {
+            margin-left: 35px;
+        }
+        
         #number {
             border: 0;
             background-color: transparent;
-            width: 20px;
-            font-size: 12px;
+            width: 30px;
+            font-size: 18px;
             outline: 0;
         }
-    }
-</style>
+        
+        .size_quantity_price {
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+        
+        .edit_delete>svg {
+            margin-right: 30px;
+        }
+        
+        .line2 {
+            border-top: 2px solid #f8dccc;
+            width: 90%;
+            margin: auto;
+            margin-bottom: 10px;
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .cafe {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 6px;
+            }
+            .order_info>h2 {
+                text-align: center;
+                font-size: 30px;
+                padding: 7px;
+            }
+            .display_info {
+                display: grid;
+                grid-template-columns: auto;
+                font-size: 15px;
+                height: 40px;
+                align-items: center;
+                align-content: center;
+                padding-left: 35px;
+            }
+            .display_info:hover {
+                background-color: #ffece1;
+            }
+            #number {
+                border: 0;
+                background-color: transparent;
+                width: 20px;
+                font-size: 12px;
+                outline: 0;
+            }
+        }
+        
+        .checkout-button {
+            background-color: #139c15;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        .checkout-button:hover {
+            background-color: #E0913B;
+        }
+        
+        .checkout-button i {
+            margin-right: 5px;
+        }
+        
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 90%;
+            height: 90%;
+            z-index: 9999;
+        }
+        
+        .popup-content {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            max-width: 50%;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
 
 <body>
     <div class="wrapper">
@@ -243,19 +293,19 @@
                     <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
                 </div>
                 <div class="drink_types">
-                    <button class="drinks cool_drinks" onclick="openDrinkMenu('iced_container' ,this, '#F4A460')" id="defaultOpen" style="outline: none">
+                    <button class="drinks cool_drinks" type="submit" onclick="openDrinkMenu('iced_container' ,this, '#F4A460')" id="defaultOpen" :style="outline: none">
               Cool Drinks
             </button>
-                    <button class="drinks hot_drinks" onclick="openDrinkMenu('hot_container' ,this, '#F4A460')" style="outline: none">
+                    <button class="drinks hot_drinks" type="submit" onclick="openDrinkMenu('hot_container' ,this, '#F4A460')" style="outline: none">
               Hot Drinks
             </button>
-                    <button class="drinks frappes" onclick="openDrinkMenu('frappe_container' ,this, '#F4A460')" style="outline: none">
+                    <button class="drinks frappes" type="submit" onclick="openDrinkMenu('frappe_container' ,this, '#F4A460')" style="outline: none">
               Frappes
             </button>
-                    <button class="drinks milk" onclick="openDrinkMenu('milk_container' ,this, '#F4A460')">
+                    <button class="drinks milk" type="submit" onclick="openDrinkMenu('milk_container' ,this, '#F4A460')" style="outline: none;">
               Milk Tea
             </button>
-                    <button class="drinks mocha" onclick="openDrinkMenu('mocha_container' ,this, '#F4A460')">
+                    <button class="drinks mocha" type="submit" onclick="openDrinkMenu('mocha_container' ,this, '#F4A460')" style="outline: none;">
               Mocha
             </button>
                 </div>
@@ -268,28 +318,29 @@
                 <div id="hot_container" class="drink_content">
                     <div class="hot cafe">
                         <div class="cafe-row">
-                            <img src="images/hot-latte.jpg" alt="hot-cafe-latte" />
+                            <img src="https://img.freepik.com/premium-photo/cup-with-cappuccino_548832-14841.jpg?size=626&ext=jpg&ga=GA1.2.1544568529.1684157972&semt=ais" alt="hot-cafe-latte" />
                             <p class="cafe-name">Hot Latte</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/flat-white.jpg" alt="flat-white" />
+                            <img src="https://img.freepik.com/premium-photo/top-view-hot-coffee-cappuccino-latte-art-isolated-white-background_158502-316.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="flat-white" />
                             <p class="cafe-name">Flat White</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/capusino.jpg" alt="Cappuccino" />
+                            <img src="https://img.freepik.com/premium-photo/cup-coffee-with-latte-art-top_838382-51.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="Cappuccino" />
                             <p class="cafe-name">Cappuccino</p>
                         </div>
 
                         <div class="cafe-row">
-                            <img src="images/hot-mocha.jpg" alt="hot-mocha" />
+                            <img src="https://img.freepik.com/premium-photo/cup-coffee-latte-top-view-with-leaf-shape-foam_50179-5181.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="hot-mocha" />
                             <p class="cafe-name">Hot Mocha</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/hot-expresso.jpg" alt="hot-expresso" />
-                            <p class="cafe-name">Hot Expresso</p>
+                            <img src="https://img.freepik.com/premium-photo/hot-coffee-black-white-ceramic-cup-espresso-is-hot-short-generative-ai-image_87414-5328.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ai" alt="hot-espresso" />
+                            <p class="cafe-name">Hot Espresso</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/hot-vanilla-chailatte.jpg" alt="vanilla-chai-latte" />
+                            <img src="https://img.freepik.com/premium-photo/glass-appetizing-spicy-latte-festive-blurred-background-with-bokeh-light-effects-3d-illustration-ai-render_88188-2553.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="vanilla-chai-latte"
+                            />
                             <p class="cafe-name">Hot Vanilla Chai Latte</p>
                         </div>
                     </div>
@@ -297,23 +348,23 @@
                 <div id="frappe_container" class="drink_content">
                     <div class="frappe cafe">
                         <div class="cafe-row">
-                            <img src="images/caremel-frappe.jpg" alt="caramel frappe" />
+                            <img src="https://img.freepik.com/premium-photo/glass-milk-with-straw-it-cookie-beach_759095-4867.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="caramel frappe" />
                             <p class="cafe-name">Caramel Frappe</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/caremel-machitto-frappe.jpg" alt="caramel macchiato frappe" />
+                            <img src="https://img.freepik.com/premium-photo/ice-cream-cup-with-melting-chocolate-isolated-clean-background-generative-ai_500695-234.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="caramel macchiato frappe" />
                             <p class="cafe-name">Caramel Macchiato</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/greentea-frappe.jpg" alt="greentea" />
+                            <img src="https://img.freepik.com/premium-photo/green-elixir-table-refreshing-blend-lush-greens-healthboosting-magic_561855-2411.jpg?size=626&ext=jpg&ga=GA1.2.1544568529.1684157972&semt=ais" alt="green-tea" />
                             <p class="cafe-name">Green Tea Frappe</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/cream-frappe.jpg" alt="cream frappe" />
+                            <img src="https://img.freepik.com/premium-photo/pink-vanilla-coffee-cup-illustration-ai-generative_115919-6066.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="cream frappe" />
                             <p class="cafe-name">Cream Frappe</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/mocha-frappe.jpg" alt="mocha frappe" />
+                            <img src="https://img.freepik.com/premium-photo/ai-generated-image-delicious-ice-cream-with-vanilla-chocolate-topping-with-double-color_812649-611.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="mocha frappe" />
                             <p class="cafe-name">Mocha Frappe</p>
                         </div>
                     </div>
@@ -321,28 +372,28 @@
                 <div id="iced_container" class="drink_content">
                     <div class="iced cafe">
                         <div class="cafe-row">
-                            <img src="images/ice-cafe-cream.jpg" alt="iced cafe cream" />
+                            <img src="https://img.freepik.com/premium-photo/mocha-frappe-plastic-cup-with-whipping-cream-chocolate-sauce-topping_6351-1606.jpg?w=1480" alt="iced cafe cream" />
                             <p class="cafe-name">Iced Cafe Cream</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/IceAmericano.jpg" alt="iced americano" />
+                            <img src="https://img.freepik.com/premium-photo/cup-coffee-with-white-background_787273-771.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="iced americano" />
                             <p class="cafe-name">Iced Americano</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/IceCholcolate.jpg" alt="IceCholcolate" />
+                            <img src="https://img.freepik.com/premium-photo/glass-chocolate-sundae-with-cherry-top_759095-6748.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="IceChocolate" />
                             <p class="cafe-name">Iced Chocolate</p>
                         </div>
 
                         <div class="cafe-row">
-                            <img src="images/mocha-cholcolate.jpg" alt="Mocha Chocolate" />
+                            <img src="https://img.freepik.com/premium-photo/glass-coffee-with-whipped-cream-chocolate-chips-top_759095-4442.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="Mocha Chocolate" />
                             <p class="cafe-name">Mocha Chocolate</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/ice-latte-cafe.jpg" alt="Ice latte" />
+                            <img src="https://img.freepik.com/premium-photo/iced-mocha-coffee-plastic-cup-isolated-white-background_38172-742.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="Ice latte" />
                             <p class="cafe-name">Ice Latte Cafe</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/cool-mocha.jpg" alt="cool mocha" />
+                            <img src="https://img.freepik.com/premium-photo/iced-latte-coffee-cup-table-cafe-coffee-shop_1339-151514.jpg?w=900" alt="cool mocha" />
                             <p class="cafe-name">Cool Mocha</p>
                         </div>
                     </div>
@@ -350,27 +401,29 @@
                 <div id="milk_container" class="drink_content">
                     <div class="milk cafe">
                         <div class="cafe-row">
-                            <img src="images/bubble-milktea.jpg" alt="Bubble Milk Tea" />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Bubble_Tea.png/340px-Bubble_Tea.png" alt="Bubble Milk Tea" />
                             <p class="cafe-name">Bubble Milk Tea</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/brown-surgar.jpg" alt="Bubble Milk Tea" />
-                            <p class="cafe-name">Brown Surgar Milk Tea</p>
+                            <img src="data:image/jpeg;base64,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"
+                                alt="Brown sugar Milk Tea" />
+                            <p class="cafe-name">Brown Sugar Milk Tea</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/honey-milktea.jpeg" alt="Honey Milk Tea" />
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3DLAP9hqwp6_lRzw2TNQUo5r2uyBAqYP-0Q&usqp=CAU" alt="Honey Milk Tea" />
                             <p class="cafe-name">Honey Milk Tea</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/caremel-cholcolate-milktea.jpg" alt="Caremel Cholcolate Milk Tea" />
-                            <p class="cafe-name">Caremel Chocolate Milk Tea</p>
+                            <img src="https://img.freepik.com/premium-photo/glass-iced-coffee-cream-are-being-poured-into-it-dark-background_410516-7593.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="Caramel Chocolate Milk Tea" />
+                            <p class="cafe-name">Caramel Chocolate Milk Tea</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/mango-bubble-tea.jpg" alt="Mango Bubble Milk Tea" />
+                            <img src="data:image/jpeg;base64,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"
+                                alt="Mango Bubble Milk Tea" />
                             <p class="cafe-name">Mango Bubble Milk Tea</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/orange-milk-tea.jpg" alt="Orange Green Tea" />
+                            <img src="https://img.freepik.com/premium-photo/refreshing-orange-juice-ai-generative_841543-2133.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="Orange Green Tea" />
                             <p class="cafe-name">Orange Green Milk Tea</p>
                         </div>
                     </div>
@@ -378,15 +431,15 @@
                 <div id="mocha_container" class="drink_content">
                     <div class="mocha cafe">
                         <div class="cafe-row">
-                            <img src="images/latte-cafe.jpg" alt="latte-cafe" />
+                            <img src="https://img.freepik.com/premium-photo/cup-coffee-with-leaf-design-top_1340-34686.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="latte-cafe" />
                             <p class="cafe-name">Latte Cafe</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/latte-cafe.jpg" alt="latte-cafe" />
+                            <img src="https://img.freepik.com/premium-photo/cup-coffee-with-leaf-design-top_1340-34686.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="latte-cafe" />
                             <p class="cafe-name">Latte Cafe</p>
                         </div>
                         <div class="cafe-row">
-                            <img src="images/latte-cafe.jpg" alt="latte-cafe" />
+                            <img src="https://img.freepik.com/premium-photo/cup-coffee-with-leaf-design-top_1340-34686.jpg?size=626&ext=jpg&ga=GA1.1.1544568529.1684157972&semt=ais" alt="latte-cafe" />
                             <p class="cafe-name">Latte Cafe</p>
                         </div>
                     </div>
@@ -404,7 +457,7 @@
                 </div>
                 <div class="size_quantity_price">
                     <p>R</p>
-                    <input id="number" type="number" value="1" min="0" />
+                    <input id="number" type="number" value="1" min="0">
                     <p>2.3</p>
                 </div>
                 <div class="edit_delete">
@@ -427,7 +480,7 @@
                 </div>
                 <div class="size_quantity_price">
                     <p>R</p>
-                    <input id="number" type="number" value="1" min="0" />
+                    <input id="number" type="number" value="1" min="0">
                     <p>2.5</p>
                 </div>
                 <div class="edit_delete">
@@ -444,6 +497,24 @@
                 </div>
             </div>
         </div>
+        <button class="checkout-button" id="checkoutButton" onclick="showPopup()">
+            <i class="fas fa-shopping-cart"></i> Check Out
+          </button>
+
+        <div id="popupContainer" class="popup-container">
+            <div class="popup-content">
+                <div class="close-button">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div id="popupContentContainer"></div>
+                <button class="close-button" onclick="closePopup()">Close</button>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
     </div>
 
     <script>
@@ -452,11 +523,11 @@
         const drink_type_scroll = document.querySelector(".drink_types");
 
         prev_scroll.addEventListener("click", () => {
-            drink_type_scroll.scrollLeft -= 350;
+            drink_type_scroll.scrollLeft -= 150;
         });
 
         next_scroll.addEventListener("click", () => {
-            drink_type_scroll.scrollLeft += 350;
+            drink_type_scroll.scrollLeft += 150;
         });
 
         function openDrinkMenu(drink_type_name, ele, color) {
@@ -473,6 +544,58 @@
             ele.style.backgroundColor = color;
         }
         document.getElementById("defaultOpen").click();
+
+        const checkoutButton = document.getElementById('checkoutButton');
+
+        function openDrinkMenu(containerId, button, color) {
+            var drinkContainers = document.getElementsByClassName('drink_content');
+            for (var i = 0; i < drinkContainers.length; i++) {
+                drinkContainers[i].style.display = 'none';
+            }
+
+            var drinkButtons = document.getElementsByClassName('drinks');
+            for (var i = 0; i < drinkButtons.length; i++) {
+                drinkButtons[i].style.backgroundColor = '';
+            }
+
+            var container = document.getElementById(containerId);
+            container.style.display = 'block';
+
+            button.style.backgroundColor = color;
+        }
+
+        function showPopup() {
+            var popupContainer = document.getElementById("popupContainer");
+            var popupContentContainer = document.getElementById("popupContentContainer");
+
+            // Create an AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // On success, insert the response HTML into the popup content container
+                        popupContentContainer.innerHTML = xhr.responseText;
+                        popupContainer.style.display = "block";
+                    } else {
+                        // Handle error case
+                        console.error("Error fetching popup content:", xhr.status);
+                    }
+                }
+            };
+
+            // Fetch the content of the external HTML file
+            xhr.open("GET", "changeCalculate", true);
+            xhr.send();
+        }
+
+        function closePopup() {
+            var popupContainer = document.getElementById("popupContainer");
+            var popupContentContainer = document.getElementById("popupContentContainer");
+
+            // Clear the popup content and hide the popup container
+            popupContentContainer.innerHTML = "";
+            popupContainer.style.display = "none";
+        }
     </script>
 </body>
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Drink</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            box-shadow: 0 12px 16px 0 rgba(228, 209, 209, 0.24), 0 17px 50px 0 rgba(90, 81, 81, 0.19);
+        }
+    </style>
+</head>
+
+<body class="m-10 text-lg">
+    <!-- CRUD PRODUCTS -->
+    <div class="new_drink w-[60%] h-fit m-auto  border-[2px] border-solid border-[#4B371C] ">
+        <div class="p-3 head">
+            <h2>New Drinks</h2>
+        </div>
+        <div class="w-[100%] border-[1px] border-solid border-[#4B371C]"></div>
+        <div class="flex">
+            <div class="add_drink w-[60%]">
+                <div class="py-3 ">
+                    <form action="" class="p-3 ">
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="dcode">Drinks code :</label>
+                            <input type="text" id="dcode" name="" class="p-1 border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                        </div>
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="dname">Drinks name :</label>
+                            <input type="text" id="dname" name="" class="p-1 border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                        </div>
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="category">Category :</label>
+                            <div class="flex justify-between">
+                                <select type="add-item" id="category" name="" class="p-1 border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                                    <option value="1">Hot Drinks</option >
+                                    <option value="2" >Cool Drinks</option >
+                                    <option value="3" >Frappe</option >
+                                </select>
+                                <button id="add_category" class=" w-fit h-fit bg-[#3CB043] text-center text-white font-bold  inline-block cursor-pointer duration-100 rounded-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[30px] h-[30px] " onclick="showPopup()">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="price">Price :</label>
+                            <input name="" min="0" type="number" id="price" class="p-1 border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                        </div>
+                        <div class="grid grid-cols-2 mt-3">
+                            <label class="mr-5" for="note">Note :</label>
+                            <textarea id="note" cols="50" rows="5" name="" class="p-1 w-full border-[1px] border-solid border-[#4B371C] rounded resize-x"> </textarea>
+                        </div>
+                    </form>
+                </div>
+                <br />
+                <div>
+                    <button class=" py-3 bg-[#3CB043] text-center text-white font-bold px-20 m-3 inline-block cursor-pointer duration-100 rounded-lg">OK</button>
+                    <button class=" py-3 px-5 bg-[#FDA172] text-center text-white  font-bold p-3 m-3 inline-block cursor-pointer duration-100 rounded-lg">Cancel</button>
+                </div>
+            </div>
+            <div class="ml-5 img">
+                <!-- <img class="w-[500px] p-3" src="../image/add_newdrink.jpg" alt=""> -->
+                <form action="#">
+                    <input class="file-input" type="file" name="file" hidden>
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-[500px] h-fit p-3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                      </svg>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- ADD NEW CATEGORY -->
+    <div id="popup" class="none w-[25%] h-fit m-auto  border-[2px] border-solid border-[#4B371C]">
+        <div class="p-3 head">
+            <h2>New Category</h2>
+        </div>
+        <div class="w-[100%] border-[1px] border-solid border-[#4B371C]"></div>
+        <div class="popup-content">
+            <form action="" class="p-3">
+                <div class="grid grid-cols-2 mt-3">
+                    <label for="gcode">Category code :</label>
+                    <input type="text" id="dcode" name="" class="border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                </div>
+                <div class="grid grid-cols-2 mt-3">
+                    <label for="gname">Category name :</label>
+                    <input type="text" id="gname" name="" class="border-[1px] border-solid border-[#4B371C] rounded" placeholder="">
+                </div>
+            </form>
+            <br />
+            <div>
+                <button id="okay" class=" py-3 bg-[#3CB043] text-center font-bold text-white px-16 in m-3 p-3 line-block cursor-pointer duration-100 rounded-lg">OK</button>
+                <button class=" py-3 px-5 bg-[#FDA172] text-center font-bold text-white p-3 m-3 inline-block cursor-pointer duration-100 rounded-lg">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const addNewCat = document.getElementById("add_category");
+        const popup = document.getElementById("popup");
+        const okay = document.getElementById("okay");
+
+        addNewCat.addEventListener()
+    </script>
+</body>
+
+</html>

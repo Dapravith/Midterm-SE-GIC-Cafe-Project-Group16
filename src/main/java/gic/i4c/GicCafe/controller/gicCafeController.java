@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.annotation.Generated;
+
 
 @RestController
     public class gicCafeController {
@@ -11,24 +13,23 @@ import org.springframework.web.servlet.ModelAndView;
         public ModelAndView login(){
             return new ModelAndView("login");
         }
-        
+
         @GetMapping(path = "/signup")
         public ModelAndView signup(){
             return new ModelAndView("signup");
         }
-    
+
         @GetMapping(path = "/tableSelection")
         public ModelAndView tableSelection(){
             return new ModelAndView("tableSelection");
         }
-
 
         @GetMapping(path = "/drinkSelection")
         public ModelAndView drinkSelection(){
             return new ModelAndView("drinkSelection");
         }
 
-        @GetMapping(path = "PopupDrink")
+        @GetMapping(path = "/PopupDrink")
         public ModelAndView PopupDrink() {
             return new ModelAndView("PopupDrink");
         }
@@ -37,7 +38,7 @@ import org.springframework.web.servlet.ModelAndView;
         public ModelAndView changeCalculate() {
             return new ModelAndView("changeCalculate");
         }
-        
+
         @GetMapping(path = "/Receipt")
         public ModelAndView Receipt() {
             return new ModelAndView("Receipt");
@@ -62,22 +63,28 @@ import org.springframework.web.servlet.ModelAndView;
         public ModelAndView addCashier() {
             return new ModelAndView("addCashier");
         }
-        
-        @GetMapping(path = "/editCashier")
-        public ModelAndView editCashier() {
-            return new ModelAndView("editCashier");
+
+        @GetMapping(path = "/ListCashiers")
+        public ModelAndView ListCashier() {
+            return new ModelAndView("ListCashiers");
         }
-        
-        @GetMapping(path = "/addNewDrink")
-        public ModelAndView addNewDrink(){
-            return new ModelAndView("addNewDrink");
+
+
+        @GetMapping(path = "/addDrink")
+        public ModelAndView addDrink() {
+            return new ModelAndView("addDrink");
+        }
+
+        @GetMapping(path = "/addFood")
+        public ModelAndView addFood() {
+            return new ModelAndView("addFood");
         }
 
         @GetMapping(path = "/editDrink")
         public ModelAndView editDrink() {
             return new ModelAndView("editDrink");
         }
-        
+
         @GetMapping(path = "/addCategories")
         public ModelAndView addCategories() {
             return new ModelAndView("addCategories");
@@ -93,10 +100,25 @@ import org.springframework.web.servlet.ModelAndView;
         public ModelAndView ProductManagement() {
             return new ModelAndView("ProductManagement");
         }
-        
+
+        @GetMapping(path = "/CategoriesManagement")
+        public ModelAndView CategoriesManagement() {
+            return new ModelAndView("CategoriesManagement");
+        }
+
+        @GetMapping(path = "/OrderHistory")
+        public ModelAndView OrderHistory() {
+            return new ModelAndView("OrderHistory");
+        }
+
         @GetMapping(path = "/viewDrink")
         public ModelAndView viewDrink() {
             return new ModelAndView("viewDrink");
+        }
+
+        @GetMapping(path = "/AdminHomescreen")
+        public ModelAndView AdminHomescreen() {
+            return new ModelAndView("AdminHomescreen");
         }
 
         @GetMapping(path = "/viewFood")
@@ -104,8 +126,10 @@ import org.springframework.web.servlet.ModelAndView;
             return new ModelAndView("viewFood");
         }
 
-        @GetMapping(path = "/viewUsers")
+        @GetMapping(path = "/viewCashiers")
         public ModelAndView viewUsers() {
             return new ModelAndView("viewUsers");
         }
+
+
 }
